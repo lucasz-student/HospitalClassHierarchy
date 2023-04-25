@@ -3,7 +3,7 @@ package HospitalClassHierarchy;
 public class InstantiateObjects {
 	public static void main(String[] args) {	
 		
-		Employee janitorLiam = new Employee("Liam", "Urgent Care", "02x8594", "Janitor");
+		Janitor janitorLiam = new Janitor("Liam", "Urgent Care", "02x8594", "Janitor", "Bathroom");
 		
 		Doctor doctorPaul = new Doctor("Urgent Care", "Paul", 10, false);
 		Nurse nurseEmma = new Nurse("Urgent Care", "Emma", "01x8394");

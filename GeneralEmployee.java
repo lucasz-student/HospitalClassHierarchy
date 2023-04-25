@@ -1,6 +1,6 @@
 package HospitalClassHierarchy;
 
-public class Employee {
+public abstract class GeneralEmployee {
 	
 
 	private String branchOfHospital; 
@@ -8,7 +8,7 @@ public class Employee {
 	private String employeeId; 
 	private String role;
 	
-	public Employee(String name, String branchOfHospital, String employeeID, String role) {
+	public GeneralEmployee(String name, String branchOfHospital, String employeeID, String role) {
 		this.employeeId = employeeID;
 		this.branchOfHospital = branchOfHospital;
 		this.name = name;
@@ -34,7 +34,5 @@ public class Employee {
 	
 	
 	
-	public void identifySelf() {
-		System.out.println("Hello my name is " + this.branchOfHospital + ", my ID is " + this.employeeId + " and I work in branch: " + this.branchOfHospital);
-	}
+	public abstract void identifySelf();
 }
