@@ -5,7 +5,7 @@ import java.util.Random;
 import MedicalWorkers.Doctor;
 import Patients.CheckupPatient;
 
-public class Thermometer implements Tools{
+public final class Thermometer implements Tools{
 
 	static {
 		System.out.print("This Thermometer can only be owned and operated by a Doctor; please Equip the tool to use\n");

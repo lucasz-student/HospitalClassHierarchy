@@ -6,7 +6,7 @@ import MedicalWorkers.Doctor;
 import MedicalWorkers.Tool;
 import Patients.CheckupPatient;
 
-public class Sphygmomanometer implements Tools {
+public final class Sphygmomanometer implements Tools {
 
 	static {
 		System.out.print("This Sphygmomanometer can only be owned and operated by a Doctor; please Equip the tool to use\n");
