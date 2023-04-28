@@ -1,6 +1,6 @@
-package HospitalClassHierarchy;
+package MedicalWorkers;
 
-public class Employee {
+public class Intern {
 	
 
 	private String branchOfHospital; 
@@ -8,7 +8,7 @@ public class Employee {
 	private String employeeId; 
 	private String role;
 	
-	public Employee(String name, String branchOfHospital, String employeeID, String role) {
+	public Intern(String name, String branchOfHospital, String employeeID, String role) {
 		this.employeeId = employeeID;
 		this.branchOfHospital = branchOfHospital;
 		this.name = name;

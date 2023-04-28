@@ -1,6 +1,7 @@
-package HospitalClassHierarchy;
+package MedicalWorkers;
 
 import MedicalForms.AppointmentForm;
+import Patients.CheckupPatient;
 
 public class Nurse {
 
@@ -26,7 +27,7 @@ public class Nurse {
 		this.branchOfHospital = branch;
 	}
 	
-	public void comfirmAppointmentWithDoctor(GeneralPatient patient, Doctor doctor, AppointmentForm AppointmentForm) { 
+	public void comfirmAppointmentWithDoctor(CheckupPatient patient, Doctor doctor, AppointmentForm AppointmentForm) { 
 		boolean comfirmation = doctor.comfirmAppointment(AppointmentForm);
 		if (comfirmation) { 
 			System.out.println("Hello, " + patient.getName() + ", your appointment for " + AppointmentForm.getTime() + " is comfirmed with the doctor!\n\n");
@@ -34,6 +35,28 @@ public class Nurse {
 		else { 
 			System.out.println("Sorry, the doctor's schedule is preoccupied. Please reschedule your appointment");
 		}
+	}
+	
+	public static void askQuestion(String Question) { 
+		switch (Question) {
+		
+		case ("What is the name of this Hospital"):
+			System.out.println("The Community Care Clinic!\n");
+			break;
+		
+		case ("What hours does this hospital operate?"):
+			System.out.println("6:00 am - 12:00 am\n");
+			break;
+		
+		case ("What insurance do you guys take?"):
+			System.out.println("Almost all insurances\n");
+			break;
+		}
+	}
+	
+	@Override
+	public String toString() {
+		return "Hi, I'm Nurse " + this.name;
 	}
 	
 	@Override

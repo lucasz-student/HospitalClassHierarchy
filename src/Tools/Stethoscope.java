@@ -2,22 +2,24 @@ package Tools;
 
 import java.util.Random;
 
-import HospitalClassHierarchy.Doctor;
-import HospitalClassHierarchy.GeneralPatient;
-import HospitalClassHierarchy.Tool;
+import MedicalWorkers.Doctor;
+import MedicalWorkers.Tool;
+import Patients.CheckupPatient;
 
 public class Stethoscope implements Tools {
 	
 	static {
-		System.out.print("This Stethoscope can only be owned and operated by a Doctor");
+		System.out.print("This Stethoscope can only be owned and operated by a Doctor; please Equip the tool to use\n");
 	};
 	
 	private boolean clean; 
 	private int toolAge;
+	private boolean equipped;
 	
 	public Stethoscope(boolean clean, int toolAge) {
 		this.clean = clean;
 		this.toolAge = toolAge;
+		this.equipped = false;
 	}
 	
 	public int getAge() {
@@ -29,30 +31,37 @@ public class Stethoscope implements Tools {
 	}
 	
 	public String listen() {
+		if (this.equipped) {
 		String[] arraySound = {"poor", "normal"};
 		Random random = new Random(); 
 		int index = random.nextInt(arraySound.length);
 		return arraySound[index];
+		} 
+		else {
+			return null;
+		}
 	}
 	
-	public void listen(GeneralPatient patient, Doctor doctor) {
+	public void listen(CheckupPatient patient, Doctor doctor) {
+		if (this.equipped) {
 		String[] arraySound = {"poor", "normal"};
 		Random random = new Random(); 
 		int index = random.nextInt(arraySound.length);
 		
 		System.out.println("\nHello, " + patient.getName());
 		System.out.println("Your internal sounds are " + arraySound[index] + "");
+		}
 	}
 
 	@Override
 	public void cleanTool() {
-		// TODO Auto-generated method stub
+		System.out.print("This tool has been cleaned");
 		
 	}
 
 	@Override
 	public void equipTool() {
-		// TODO Auto-generated method stub
+		this.equipped = true;
 		
 	}
 

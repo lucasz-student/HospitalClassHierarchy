@@ -1,25 +1,28 @@
-package HospitalClassHierarchy;
+package MedicalWorkers;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 import MedicalForms.AppointmentForm;
 import MedicalForms.WellnessForm;
+import Patients.CheckupPatient;
 import Tools.Sphygmomanometer;
 import Tools.Stethoscope;
 import Tools.Thermometer;
+import Tools.Tools;
 
 public class Doctor {
 	private String branchOfHospital;
 	private String name;
 	private int Experience;
 	private boolean inResidency; 
+	private int DoctorID;
 
-	public Doctor(String branchOfHospital, String name, int Experience, boolean inResidency) {
+	public Doctor(String branchOfHospital, String name, int Experience, boolean inResidency, int DoctorID) {
 		this.branchOfHospital = branchOfHospital;
 		this.name = name;
 		this.inResidency = inResidency; 
 		this.Experience = Experience; 
+		this.DoctorID = DoctorID;
 	}
 	
 	public void setExperience(int years) {
@@ -47,7 +50,7 @@ public class Doctor {
 		}
 	}
 	
-	public WellnessForm patientCheckup(GeneralPatient patient, Sphygmomanometer bpMachine, Stethoscope stethoscope, Thermometer thermometer) {
+	public WellnessForm patientCheckup(CheckupPatient patient, Sphygmomanometer bpMachine, Stethoscope stethoscope, Thermometer thermometer) {
 		String bloodPressure = bpMachine.measureBP();
 		String soundQuality = stethoscope.listen() ;
 		String temp = thermometer.measureTemp();
@@ -57,7 +60,7 @@ public class Doctor {
 		return wellnessForm;
 	}
 	
-	public void diagnosePatient(GeneralPatient patient, WellnessForm wellnessSlip) {
+	public void diagnosePatient(CheckupPatient patient, WellnessForm wellnessSlip) {
 		
 		System.out.println("\nHello, " + patient.getName() + " welcome to your scheduled appointment");
 		switch (wellnessSlip.getBp()) {
@@ -97,7 +100,7 @@ public class Doctor {
 		}
 	}
 	
-	public void prescribeMedicine(GeneralPatient patient, WellnessForm wellnessSlip) {
+	public void prescribeMedicine(CheckupPatient patient, WellnessForm wellnessSlip) {
 		System.out.println("\nHello, " + patient.getName());
 		switch (wellnessSlip.getBp()) {
 		case ("high"):
@@ -129,8 +132,30 @@ public class Doctor {
 
 	}
 	
+	public void equipTool(Tools tool) {
+		tool.equipTool();
+	}
+	
 	@Override
 	public String toString() {
 		return "Hi, I'm Dr. " + this.name;
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.DoctorID;
+	}
+	
+	@Override 
+	public boolean equals(Object obj) {
+		if (obj == this) {
+			return true;
+		}
+		
+		if (obj.hashCode() == this.hashCode()) {
+			return true;
+		}
+		
+		return false;
 	}
 }

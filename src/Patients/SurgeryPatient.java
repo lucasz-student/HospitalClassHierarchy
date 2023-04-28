@@ -1,6 +1,9 @@
-package HospitalClassHierarchy;
+package Patients;
 
-public class SurgeryPatient {
+import MedicalForms.BasicPatientForm;
+import MedicalWorkers.Nurse;
+
+public class SurgeryPatient implements Patient{
 	
 	private String name;
 	private int age;
@@ -32,5 +35,24 @@ public class SurgeryPatient {
 		this.surgeryCompletion = false;
 		System.out.println("\nHello, " + this.name + " your surgery is scheduled and your current surgery status for patient is incomplete\n");
 		return surgeryCard;
+	}
+
+	@Override
+	public void checkIn() {
+		System.out.println("My name is " + this.name + " and I am checking in for" + this.surgeryName + "\n");
+		
+	}
+
+	@Override
+	public void checkOut() {
+		System.out.println("My name is " + this.name + " and I am checking in out after finishing my surgery\n");
+		
+	}
+
+	@Override
+	public void fillOutPatientForm(String time) {
+		String age = Integer.toString(this.age);
+		BasicPatientForm form = new BasicPatientForm(this.name, age, this.surgeryName, time);
+		form.printForm();
 	}
 }
