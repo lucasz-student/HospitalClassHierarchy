@@ -71,10 +71,7 @@ public final class Sphygmomanometer implements Tools {
 		} else {
 			throw new ToolPermissionDeniedException();
 		}
-		
-		
 	}
-
-	}
+}
 
 

@@ -12,7 +12,6 @@ public class PatientNotFoundException extends Exception {
 	}
 	
 	public PatientNotFoundException(String message, Throwable cause) {
-		super(message, cause);
-		
-}
+		super(message, cause);	
+	}
 }

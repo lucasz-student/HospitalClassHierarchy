@@ -37,7 +37,6 @@ public final class SurgeryRoomSanitizor implements CleaningAndSanitization{
 	@Override
 	public void identifySelf() {
 		System.out.print("Hello, I am a Surgeon Room Sanitizor. My name and age are: " + this.name + " " + this.age);
-		
 	}
 	
 }

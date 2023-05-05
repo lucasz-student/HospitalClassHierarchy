@@ -153,7 +153,6 @@ public class Doctor {
 		if (wellnessSlip.getStethoscopeReading() == "poor") { 
 			System.out.print("Please schedule an appointment to check your heart and lungs");
 		}
-
 	}
 	
 	@Override
@@ -171,14 +170,13 @@ public class Doctor {
 		if (obj == this) {
 			return true;
 		}
-		
+	
         if(obj == null || obj.getClass()!= this.getClass())
             return false;
 		
 		if (obj.hashCode() == this.hashCode()) {
 			return true;
 		}
-		
 		return false;
 	}
 }

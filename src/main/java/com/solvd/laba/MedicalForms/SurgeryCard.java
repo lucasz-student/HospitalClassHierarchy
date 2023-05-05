@@ -37,5 +37,4 @@ public class SurgeryCard extends MedicalForms{
 		String[] surgeryCard = {this.age, this.name, this.surgeryName};
 		return surgeryCard;
 	}
-
 }

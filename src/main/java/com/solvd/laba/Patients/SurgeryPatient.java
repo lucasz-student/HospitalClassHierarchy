@@ -45,14 +45,12 @@ public class SurgeryPatient implements Patient{
 
 	@Override
 	public void checkIn() {
-		System.out.println("My name is " + this.name + " and I am checking in for" + this.surgeryName + "\n");
-		
+		System.out.println("My name is " + this.name + " and I am checking in for" + this.surgeryName + "\n");	
 	}
 
 	@Override
 	public void checkOut() {
-		System.out.println("My name is " + this.name + " and I am checking in out after finishing my surgery\n");
-		
+		System.out.println("My name is " + this.name + " and I am checking in out after finishing my surgery\n");	
 	}
 
 	@Override

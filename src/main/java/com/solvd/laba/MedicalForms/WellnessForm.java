@@ -16,7 +16,6 @@ public class WellnessForm extends MedicalForms {
 		this.stethoscopeReading = stethoscopeReading;
 		this.temperature = temperature;
 		Utils.logger.info("Constructing Wellness Form");
-		
 	}
 	
 	public String getName() {
@@ -42,8 +41,7 @@ public class WellnessForm extends MedicalForms {
 	@Override
 	public void printForm() {
 		String[] form = {this.age, this.name, this.bloodPressure, this.stethoscopeReading, this.temperature};
-		System.out.println(Arrays.toString(form));
-		
+		System.out.println(Arrays.toString(form));	
 	}
 
 	@Override
@@ -51,8 +49,4 @@ public class WellnessForm extends MedicalForms {
 		String[] WellnessForm = {this.age, this.name, this.bloodPressure, this.stethoscopeReading, this.temperature};
 		return WellnessForm;
 	}
-
-	
-	
-	
 }

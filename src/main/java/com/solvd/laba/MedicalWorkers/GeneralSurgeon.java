@@ -77,7 +77,6 @@ public class GeneralSurgeon {
 		if (obj.hashCode() == this.hashCode()) {
 			return true;
 		}
-		
 		return false;
 	}
 }

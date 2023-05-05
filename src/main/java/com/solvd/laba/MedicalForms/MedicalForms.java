@@ -1,7 +1,5 @@
 package com.solvd.laba.MedicalForms;
 
-import com.solvd.laba.Utils.Utils;
-
 public abstract class MedicalForms {
 	protected String age; 
 	protected String name;

@@ -12,7 +12,6 @@ public class NoAppointmentException extends Exception {
 	}
 	
 	public NoAppointmentException(String message, Throwable cause) {
-		super(message, cause);
-		
-}
+		super(message, cause);	
+	}
 }

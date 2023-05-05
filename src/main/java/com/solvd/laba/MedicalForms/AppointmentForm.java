@@ -45,5 +45,4 @@ public class AppointmentForm extends MedicalForms {
 		String[] appointmentForm = {this.age, this.name, this.time, this.sick, this.reasonForVisit};
 		return appointmentForm;
 	}
-
 }

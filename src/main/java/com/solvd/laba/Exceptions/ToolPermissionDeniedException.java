@@ -13,7 +13,5 @@ public class ToolPermissionDeniedException extends Exception {
 	
 	public ToolPermissionDeniedException(String message, Throwable cause) {
 		super(message, cause);
-		
-
-}
+	}
 }

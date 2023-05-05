@@ -13,6 +13,5 @@ public class UnregisteredSurgeryException extends Exception{
 	
 	public UnregisteredSurgeryException(String message, Throwable cause) {
 		super(message, cause);
-		
-}
+	}
 }

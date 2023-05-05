@@ -31,7 +31,6 @@ public class InstantiateObjects {
 		Janitor janitorLiam = new Janitor("Liam", 25);
 		SurgeryRoomSanitizor sanitizorJacob = new SurgeryRoomSanitizor("Jacob" , 30);
 
-		//Doctors and Nurses//
 		Doctor doctorPaul = new Doctor("Urgent Care", "Paul", 10, false, 10011);
 		Doctor doctorException = new Doctor("Neurology", "Exception", 10, false, 10012);
 		int NurseID = 18394;
@@ -39,15 +38,12 @@ public class InstantiateObjects {
 		int NurseID1 = 18295;
 		Nurse nurseEric = new Nurse("Urgent Care", "Emma", NurseID1);
 		
-		//Schedule and Confirm Appointment for John//
 		CheckupPatient patientJohn = new CheckupPatient("John", 30, false, "Checkup With Doctor");
 		patientJohn.checkIn();
 		patientJohn.fillOutPatientForm("11:am");
 		AppointmentForm AppointmentSlip  = patientJohn.scheduleAppointmentWithNurse(nurseEmma, "11:am", "not sick");
 		nurseEmma.comfirmAppointmentWithDoctor(patientJohn, doctorPaul, AppointmentSlip);
 		
-		
-		//Instantiate and equip tools//
 		Stethoscope stethoscope = new Stethoscope(true, 5, doctorPaul);
 		Sphygmomanometer BPMachine = new Sphygmomanometer("pocket-aneroid", 5, doctorPaul);
 		Thermometer thermometer = new Thermometer("forehead-scan", 5, doctorPaul);
@@ -55,14 +51,12 @@ public class InstantiateObjects {
 		try {
 			stethoscope.equipTool(doctorPaul);
 			BPMachine.equipTool(doctorPaul);
-			thermometer.equipTool(doctorPaul);		// 2 EXCEPTION
+			thermometer.equipTool(doctorPaul);		
 		} catch (ToolPermissionDeniedException e1) {
 			e1.printStackTrace();
 		}
 
 		
-		
-		//Diagnose and prescribe medicine to Greg NO APPOINTMENT // //2 EXCEPTION
 		CheckupPatient patientGreg = new CheckupPatient("Greg", 31, true, "checkup, diagnosis, and appointment");
 		patientGreg.checkIn();
 		patientGreg.fillOutPatientForm("12:pm");
@@ -78,7 +72,7 @@ public class InstantiateObjects {
 		
 		System.out.println("\n");
 		
-		//Diagnose and prescribe medicine to John//
+		
 		WellnessForm WellnessSlip1;
 		try {
 			WellnessSlip1 = doctorPaul.patientCheckup(patientJohn, BPMachine, stethoscope, thermometer);
@@ -91,7 +85,7 @@ public class InstantiateObjects {
 		
 		System.out.println("\n");
 		
-		// Demonstrate tools with Patient James//
+		
 		CheckupPatient patientJames = new CheckupPatient("James", 11, false, "Check internals");
 		patientJames.checkIn();
 		patientJames.fillOutPatientForm("1 pm");
@@ -106,16 +100,16 @@ public class InstantiateObjects {
 		
 		System.out.println("\n");
 		
-		//Perform Surgery for Elijiah//
+
 		
 		SurgeryPatient surgeryPatientElijiah = new SurgeryPatient("Elijiah", 25, "Appendectomy");
-		surgeryPatientElijiah.fillOutPatientForm("5:00pm"); // EXCEPTION
+		surgeryPatientElijiah.fillOutPatientForm("5:00pm"); 
 		GeneralSurgeon surgeonSaul = new GeneralSurgeon("Saul", 15, "General Surgery", "Appendectomy", 10001);
 		String[] Surgerycard = surgeryPatientElijiah.SurgeryCardFromNurse(nurseEmma);
 		sanitizorJacob.sterilizeSurguryRoom(surgeonSaul);
 		surgeonSaul.commonSurgery(surgeryPatientElijiah, Surgerycard);
 		
-		//Override toString, hashcode, equals// 
+
 		System.out.println(doctorPaul);
 		System.out.println(doctorPaul.hashCode());
 		
@@ -129,7 +123,7 @@ public class InstantiateObjects {
 		
 		System.out.println("\n");
 		
-		// Ask nurse Questions; statically //
+		
 		Nurse.askQuestion("What is the name of this Hospital");
 		Nurse.askQuestion("What hours does this hospital operate?");
 		Nurse.askQuestion("What insurance do you guys take?");

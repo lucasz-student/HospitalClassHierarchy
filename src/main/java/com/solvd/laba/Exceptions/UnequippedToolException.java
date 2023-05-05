@@ -12,7 +12,6 @@ public class UnequippedToolException extends Exception{
 	}
 	
 	public UnequippedToolException(String message, Throwable cause) {
-		super(message, cause);
-		
-}
+		super(message, cause);		
+	}
 }
