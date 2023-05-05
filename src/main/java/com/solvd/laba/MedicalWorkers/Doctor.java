@@ -1,8 +1,5 @@
 package com.solvd.laba.MedicalWorkers;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -14,29 +11,20 @@ import com.solvd.laba.Tools.Stethoscope;
 import com.solvd.laba.Tools.Thermometer;
 import com.solvd.laba.Tools.Tools;
 import com.solvd.laba.Utils.Utils;
-import com.solvd.laba.InstantiateObjects;
 import com.solvd.laba.Exceptions.NoAppointmentException;
 import com.solvd.laba.Exceptions.PatientNotFoundException;
+import com.solvd.laba.Exceptions.ToolPermissionDeniedException;
 import com.solvd.laba.Exceptions.UnequippedToolException;
 
-public class Doctor {
-	private String branchOfHospital;
-	private String name;
-	private int Experience;
-	private boolean inResidency; 
-	private int DoctorID;
+public class Doctor extends MedicalEmployee {
 
-	public Doctor(String branchOfHospital, String name, int Experience, boolean inResidency, int DoctorID) {
-		this.branchOfHospital = branchOfHospital;
-		this.name = name;
-		this.inResidency = inResidency; 
-		this.Experience = Experience; 
-		this.DoctorID = DoctorID;
+	
+
+	public Doctor(String name, int age, int DoctorID, String branchOfHospital) {
+		super(name, age, DoctorID, branchOfHospital);
 	}
 	
-	public void setExperience(int years) {
-		this.Experience = years;
-	}
+
 	
 	public String getbranchOfHospital() {
 		return this.branchOfHospital;
@@ -79,10 +67,31 @@ public class Doctor {
 			
 			return wellnessForm;
 		}
-		
-				
-
 	}
+	
+	public void equipSphygmomanometer(Sphygmomanometer BPMachine) throws ToolPermissionDeniedException {
+		if (this.equals(BPMachine.getOwner())) {
+			BPMachine.equipped = true;
+		}
+	} 
+	
+	public void equipThermometer(Thermometer thermometer) throws ToolPermissionDeniedException {
+
+	} 
+	
+	public void equipStethoscope(Stethoscope Stethoscope) throws ToolPermissionDeniedException {
+
+	} 
+	
+	public void EquipTool(Tools tool) throws ToolPermissionDeniedException{
+		if (this.equals(tool.getOwner())) {
+			tool.equipTool();
+		} else {
+			throw new ToolPermissionDeniedException();
+		}
+		
+	}
+	
 	
 	public void diagnosePatient(CheckupPatient patient, WellnessForm wellnessSlip) {
 		Utils.logger.info("Successfully Diagnosing patient");
@@ -153,30 +162,5 @@ public class Doctor {
 		if (wellnessSlip.getStethoscopeReading() == "poor") { 
 			System.out.print("Please schedule an appointment to check your heart and lungs");
 		}
-	}
-	
-	@Override
-	public String toString() {
-		return "Hi, I'm Dr. " + this.name;
-	}
-	
-	@Override
-	public int hashCode() {
-		return this.DoctorID;
-	}
-	
-	@Override 
-	public boolean equals(Object obj) {
-		if (obj == this) {
-			return true;
-		}
-	
-        if(obj == null || obj.getClass()!= this.getClass())
-            return false;
-		
-		if (obj.hashCode() == this.hashCode()) {
-			return true;
-		}
-		return false;
 	}
 }

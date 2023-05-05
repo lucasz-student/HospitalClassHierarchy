@@ -42,7 +42,5 @@ public class Utils {
 		writer1.print("");
 		writer.close();
 		writer1.close();
-	}
-	
-	
+	} 
 }

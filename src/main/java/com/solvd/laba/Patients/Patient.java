@@ -9,4 +9,5 @@ public interface Patient {
 	public void checkOut();
 
 	public void fillOutPatientForm(String time) throws IOException;
+	
 }

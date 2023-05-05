@@ -16,7 +16,7 @@ public final class Stethoscope implements Tools {
 	
 	private boolean clean; 
 	private int toolAge;
-	private boolean equipped;
+	public boolean equipped;
 	private Doctor owner;
 	
 	public Stethoscope(boolean clean, int toolAge, Doctor owner) {
@@ -32,6 +32,11 @@ public final class Stethoscope implements Tools {
 	
 	public void setClean(boolean clean) {
 		this.clean = clean;
+	}
+	
+	@Override
+	public Doctor getOwner() {
+		return this.owner;
 	}
 	
 	public String listen() throws UnequippedToolException {
@@ -58,22 +63,7 @@ public final class Stethoscope implements Tools {
 	}
 
 	@Override
-	public void cleanTool() {
-		System.out.print("This tool has been cleaned");
-		
+	public void equipTool() {
+		this.equipped = true;
 	}
-
-	@Override
-	public void equipTool(Doctor doctor) throws ToolPermissionDeniedException {
-		Utils.logger.fatal("Validating tool Owner...");
-		if (doctor.equals(this.owner)) {
-			this.equipped = true;
-		} else {
-			throw new ToolPermissionDeniedException();
-		}
-		
-	}
-		
-	
-
 }

@@ -1,19 +1,23 @@
-2023-05-04 22:06:35.173 [main] INFO  com.solvd.laba.InstantiateObjects - Testing program...
-2023-05-04 22:06:35.179 [main] INFO  com.solvd.laba.InstantiateObjects - Logging Patient's name to Patient file: John
-2023-05-04 22:06:35.179 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Patient Form
-2023-05-04 22:06:35.181 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Appointment Form
-2023-05-04 22:06:35.182 [main] INFO  com.solvd.laba.InstantiateObjects - Logging Name Patient to Appointment file: John
-2023-05-04 22:06:49.794 [main] FATAL com.solvd.laba.InstantiateObjects - Validating tool Owner...
-2023-05-04 22:06:49.794 [main] FATAL com.solvd.laba.InstantiateObjects - Validating tool Owner...
-2023-05-04 22:06:49.794 [main] FATAL com.solvd.laba.InstantiateObjects - Validating tool Owner...
-2023-05-04 22:06:49.794 [main] INFO  com.solvd.laba.InstantiateObjects - Logging Patient's name to Patient file: Greg
-2023-05-04 22:06:49.795 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Patient Form
-2023-05-04 22:06:49.795 [main] ERROR com.solvd.laba.InstantiateObjects - Finding Patient in files: Greg
-2023-05-04 22:06:49.797 [main] ERROR com.solvd.laba.InstantiateObjects - Finding Patient in files: John
-2023-05-04 22:06:49.798 [main] INFO  com.solvd.laba.InstantiateObjects - Successfully found PatientName, returning WellnessForm
-2023-05-04 22:06:49.799 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Wellness Form
-2023-05-04 22:06:49.799 [main] INFO  com.solvd.laba.InstantiateObjects - Successfully Diagnosing patient
-2023-05-04 22:06:49.799 [main] INFO  com.solvd.laba.InstantiateObjects - Logging Patient's name to Patient file: James
-2023-05-04 22:06:49.800 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Patient Form
-2023-05-04 22:06:49.802 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Patient Form
-2023-05-04 22:06:49.803 [main] INFO  com.solvd.laba.InstantiateObjects - Logging Name Patient to Patient file: Elijiah
+2023-05-05 03:32:44.914 [main] INFO  com.solvd.laba.InstantiateObjects - Testing program...
+2023-05-05 03:32:44.918 [main] INFO  com.solvd.laba.InstantiateObjects - New MedicalEmployee mapped{Paul=10011}
+2023-05-05 03:32:44.918 [main] INFO  com.solvd.laba.InstantiateObjects - New MedicalEmployee mapped{Paul=10011, Exception=10034}
+2023-05-05 03:32:44.919 [main] INFO  com.solvd.laba.InstantiateObjects - New MedicalEmployee mapped{Paul=10011, Emma=18394, Exception=10034}
+2023-05-05 03:32:44.919 [main] INFO  com.solvd.laba.InstantiateObjects - New MedicalEmployee mapped{Paul=10011, Emma=18295, Exception=10034}
+2023-05-05 03:32:44.920 [main] INFO  com.solvd.laba.InstantiateObjects - Logging Patient's name to Patient file: John
+2023-05-05 03:32:44.921 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Patient Form
+2023-05-05 03:32:44.922 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Appointment Form
+2023-05-05 03:32:44.922 [main] INFO  com.solvd.laba.InstantiateObjects - Logging Name Patient to Appointment file: John
+2023-05-05 03:32:45.836 [main] INFO  com.solvd.laba.InstantiateObjects - Logging Patient's name to Patient file: Greg
+2023-05-05 03:32:45.836 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Patient Form
+2023-05-05 03:32:45.837 [main] ERROR com.solvd.laba.InstantiateObjects - Finding Patient in files: Greg
+2023-05-05 03:32:45.838 [main] WARN  com.solvd.laba.InstantiateObjects - Patient not on AppointmentList
+2023-05-05 03:32:45.838 [main] ERROR com.solvd.laba.InstantiateObjects - Finding Patient in files: John
+2023-05-05 03:32:45.839 [main] INFO  com.solvd.laba.InstantiateObjects - Successfully found PatientName, returning WellnessForm
+2023-05-05 03:32:45.839 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Wellness Form
+2023-05-05 03:32:45.840 [main] INFO  com.solvd.laba.InstantiateObjects - Successfully Diagnosing patient
+2023-05-05 03:32:45.840 [main] INFO  com.solvd.laba.InstantiateObjects - Logging Patient's name to Patient file: James
+2023-05-05 03:32:45.840 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Patient Form
+2023-05-05 03:32:45.841 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Patient Form
+2023-05-05 03:32:45.841 [main] INFO  com.solvd.laba.InstantiateObjects - Logging Name Patient to Patient file: Elijiah
+2023-05-05 03:32:45.843 [main] INFO  com.solvd.laba.InstantiateObjects - New MedicalEmployee mapped{Saul=10001, Paul=10011, Emma=18295, Exception=10034}
+2023-05-05 03:32:45.846 [main] INFO  com.solvd.laba.InstantiateObjects - New MedicalEmployee mapped{Saul=10001, Paul=10011, Emma=18295, Jane=10572, Exception=10034}

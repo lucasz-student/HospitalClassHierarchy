@@ -16,7 +16,7 @@ public final class Sphygmomanometer implements Tools {
 	
 	private String machineStyle;
 	private int toolAge;
-	private boolean equipped;
+	public boolean equipped;
 	private Doctor owner;
 	
 	public Sphygmomanometer(String machineStyle, int toolAge, Doctor owner) {
@@ -33,6 +33,12 @@ public final class Sphygmomanometer implements Tools {
 	public void setAge(int age) {
 		this.toolAge = age;
 	}
+	
+	@Override
+	public Doctor getOwner() {
+		return this.owner;
+	}
+	
 	public String measureBP() throws UnequippedToolException {
 		if (this.equipped) {
 		String[] arrayBP = {"high", "low", "normal"};
@@ -57,20 +63,10 @@ public final class Sphygmomanometer implements Tools {
 		} else {throw new UnequippedToolException("Tool Unequipped");};
 	}
 
-	@Override
-	public void cleanTool() {
-		System.out.print("This tool has been cleaned");
-		
-	}
 
 	@Override
-	public void equipTool(Doctor doctor) throws ToolPermissionDeniedException {
-		Utils.logger.fatal("Validating tool Owner...");
-		if (doctor.equals(this.owner)) {
-			this.equipped = true;
-		} else {
-			throw new ToolPermissionDeniedException();
-		}
+	public void equipTool() {
+		this.equipped = true;
 	}
 }
 

@@ -3,20 +3,16 @@ package com.solvd.laba.MedicalWorkers;
 import com.solvd.laba.MedicalForms.AppointmentForm;
 import com.solvd.laba.Patients.CheckupPatient;
 
-public class Nurse {
+public class Nurse extends MedicalEmployee {
 
-	private String branchOfHospital; 
-	private String name;
-	private int nurseID;
+
 	
-	public Nurse(String branch, String name, int ID) { 
-		this.branchOfHospital = branch;
-		this.name = name;
-		this.nurseID = ID;
+	public Nurse(String name, int age, int ID, String branch) { 
+		super(name, age, ID, branch);
 	}
 	
 	public int getID() {
-		return this.nurseID; 
+		return super.medicalID; 
 	}
 	
 	public String getName() {
@@ -52,31 +48,5 @@ public class Nurse {
 			System.out.println("Almost all insurances\n");
 			break;
 		}
-	}
-	
-	@Override
-	public String toString() {
-		return "Hi, I'm Nurse " + this.name;
-	}
-	
-	@Override
-	public int hashCode() {
-		return this.nurseID;
-	}
-	
-	@Override 
-	public boolean equals(Object obj) {
-		if (obj == this) {
-			return true;
-		}
-		
-        if(obj == null || obj.getClass()!= this.getClass())
-            return false;
-		
-		if (obj.hashCode() == this.hashCode()) {
-			return true;
-		}
-		
-		return false;
 	}
 }
