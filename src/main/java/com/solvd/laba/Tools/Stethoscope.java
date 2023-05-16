@@ -56,7 +56,6 @@ public final class Stethoscope implements Tools {
 		String[] arraySound = {"poor", "normal"};
 		Random random = new Random(); 
 		int index = random.nextInt(arraySound.length);
-		
 		System.out.println("\nHello, " + patient.getName());
 		System.out.println("Your internal sounds are " + arraySound[index] + "");
 		} else {throw new UnequippedToolException("Tool Unequipped");};

@@ -1,7 +1,7 @@
 package com.solvd.laba;
 
 import java.io.IOException;
-
+import org.apache.commons.io.FileUtils;
 import com.solvd.laba.Exceptions.NoAppointmentException;
 import com.solvd.laba.Exceptions.ToolPermissionDeniedException;
 import com.solvd.laba.Exceptions.UnequippedToolException;
@@ -31,10 +31,10 @@ public class InstantiateObjects {
 		Janitor janitorLiam = new Janitor("Liam", 25);
 		SurgeryRoomSanitizor sanitizorJacob = new SurgeryRoomSanitizor("Jacob" , 30);
 
-		Doctor doctorPaul = new Doctor("Paul", 45, 10011, "Urgent Care");
-		Doctor doctorException = new Doctor("Exception", 35, 10034, "Neurology");
-		Nurse nurseEmma = new Nurse("Emma", 32, 18394, "Urgent Care");
-		Nurse nurseEric = new Nurse("Emma", 31, 18295, "Urgent Care");
+		Doctor doctorPaul = new Doctor("Paul", 45, "Urgent Care");
+		Doctor doctorException = new Doctor("Exception", 35, "Neurology");
+		Nurse nurseEmma = new Nurse("Emma", 32, "Urgent Care");
+		Nurse nurseEric = new Nurse("Emma", 31, "Urgent Care");
 		
 		CheckupPatient patientJohn = new CheckupPatient("John", 30, false, "Checkup With Doctor");
 		patientJohn.checkIn();
@@ -60,7 +60,7 @@ public class InstantiateObjects {
 		patientGreg.fillOutPatientForm("12:pm");
 		WellnessForm WellnessSlip;
 		try {
-			WellnessSlip = doctorPaul.patientCheckup(patientGreg, BPMachine, stethoscope, thermometer);
+			WellnessSlip = doctorPaul.patientCheckup(patientGreg, BPMachine, stethoscope, thermometer, nurseEmma);
 			doctorPaul.diagnosePatient(patientGreg, WellnessSlip);
 			doctorPaul.prescribeMedicine(patientGreg, WellnessSlip);
 		} catch (IOException | NoAppointmentException | UnequippedToolException e) {
@@ -73,7 +73,7 @@ public class InstantiateObjects {
 		
 		WellnessForm WellnessSlip1;
 		try {
-			WellnessSlip1 = doctorPaul.patientCheckup(patientJohn, BPMachine, stethoscope, thermometer);
+			WellnessSlip1 = doctorPaul.patientCheckup(patientJohn, BPMachine, stethoscope, thermometer, nurseEmma);
 			doctorPaul.diagnosePatient(patientJohn, WellnessSlip1);
 			doctorPaul.prescribeMedicine(patientJohn, WellnessSlip1);
 		} catch (IOException | NoAppointmentException | UnequippedToolException e) {
@@ -102,7 +102,7 @@ public class InstantiateObjects {
 		
 		SurgeryPatient surgeryPatientElijiah = new SurgeryPatient("Elijiah", 25, "Appendectomy");
 		surgeryPatientElijiah.fillOutPatientForm("5:00pm"); 
-		GeneralSurgeon surgeonSaul = new GeneralSurgeon("Saul", 15, 10001, "General Surgery", "Appendectomy");
+		GeneralSurgeon surgeonSaul = new GeneralSurgeon("Saul", 15, "General Surgery", "Appendectomy");
 		String[] Surgerycard = surgeryPatientElijiah.SurgeryCardFromNurse(nurseEmma);
 		sanitizorJacob.sterilizeSurguryRoom(surgeonSaul);
 		surgeonSaul.commonSurgery(surgeryPatientElijiah, Surgerycard);
@@ -139,11 +139,9 @@ public class InstantiateObjects {
 		
 		MedicalForms.printAllFormsToday();
 		
-		Utils.flushOutput();
-		
 		System.out.println("\n");
 		
-		Intern internJane = new Intern("Jane", 24, 10572, "Psychiatry");
+		Intern internJane = new Intern("Jane", 24, "Psychiatry");
 		internJane.takeNotesInJournal("prologue : Hello World");
 		internJane.takeNotesInJournal("Jan-1 : Mitochondria is the powerhouse of the cell");
 		internJane.takeNotesInJournal("Jan-2 : Glycogen stores sugars in animals");
@@ -160,5 +158,14 @@ public class InstantiateObjects {
 		
 		internJane.tearPage(0);
 		internJane.openNotePad();
+		
+		System.out.println("\n");
+		
+		Utils.readFile(Utils.appointmentList);
+		Utils.readFile(Utils.patientList);
+		
+		Utils.uniqueWordsInFile(Utils.uniqueWordsFile, Utils.uniqueWordsResultFile);
+		
+		Utils.flushOutput();
 	}
 }

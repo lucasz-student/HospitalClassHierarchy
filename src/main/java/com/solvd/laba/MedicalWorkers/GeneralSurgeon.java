@@ -13,8 +13,8 @@ public class GeneralSurgeon extends MedicalEmployee{
 	private boolean surgeryRoomSterileStatus;
 
 	
-	public GeneralSurgeon(String name, int age, int surgeonID, String branchOfHospital,  String SurgerySpecialty) {
-		super(name, age, surgeonID, branchOfHospital);
+	public GeneralSurgeon(String name, int age, String branchOfHospital,  String SurgerySpecialty) {
+		super(name, age, branchOfHospital);
 		this.SurgerySpecialty = SurgerySpecialty;
 		this.surgeryRoomSterileStatus = false;
 
@@ -36,12 +36,10 @@ public class GeneralSurgeon extends MedicalEmployee{
 		try {
 			if (Utils.checkFileForString(Utils.patientList, patient.getName()) == false) {
 				throw new UnregisteredSurgeryException("Surgery Unregistered");
-			}
-			else if (surgeryRoomSterileStatus) {
+			} else if (surgeryRoomSterileStatus) {
 			System.out.println(surgeryCard[1] + "'s " + surgeryCard[2] + " is complete. Please return to the lobby");
 			patient.setSurgeryCompletion(true);
-			}
-			else { 
+			} else { 
 				System.out.print("Please make sure this room is sterile before surgery\n");
 			}
 		} catch (IOException e) {

@@ -45,8 +45,7 @@ public class WellnessForm extends MedicalForms {
 	}
 
 	@Override
-	public String[] returnForm() {
-		String[] WellnessForm = {this.age, this.name, this.bloodPressure, this.stethoscopeReading, this.temperature};
-		return WellnessForm;
+	public String returnForm() {
+		return "" + this.age + " " + this.name + " " + this.bloodPressure + " " + this.stethoscopeReading + " " + this.temperature;
 	}
 }

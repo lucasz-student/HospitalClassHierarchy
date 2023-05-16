@@ -54,13 +54,14 @@ public final class Sphygmomanometer implements Tools {
 	
 	public void measureBP(CheckupPatient patient, Doctor doctor) throws UnequippedToolException {
 		if (this.equipped) {
-		int min = 30; 
-		int max = 150;
-		double randomfloatBP = Math.floor(Math.random() *(max - min + 1) + min); 
-		String randomStringBP = String.valueOf(randomfloatBP);
-		System.out.println("\nHello, " + patient.getName());
-		System.out.println("Your blood pressure is " + randomStringBP+ " mmHg"); 
-		} else {throw new UnequippedToolException("Tool Unequipped");};
+			int min = 30; 
+			int max = 150;
+			double randomfloatBP = Math.floor(Math.random() *(max - min + 1) + min); 
+			String randomStringBP = String.valueOf(randomfloatBP);
+			System.out.println("\nHello, " + patient.getName());
+			System.out.println("Your blood pressure is " + randomStringBP+ " mmHg"); 
+		} else {
+			throw new UnequippedToolException("Tool Unequipped");};
 	}
 
 

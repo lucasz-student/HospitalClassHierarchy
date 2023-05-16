@@ -6,8 +6,8 @@ public class Intern extends MedicalEmployee{
 	
 	private LinkedListNotepad<String> notesJournal = new LinkedListNotepad<>();
 	
-	public Intern(String name, int age, int employeeID, String branchOfHospital) {
-		super(name, age, employeeID, branchOfHospital);
+	public Intern(String name, int age, String branchOfHospital) {
+		super(name, age, branchOfHospital);
 	}
 	
 	public String getName() {
@@ -22,9 +22,8 @@ public class Intern extends MedicalEmployee{
 		this.branchOfHospital = branch;
 	}
 	
-	
 	public void identifySelf() {
-		System.out.println("Hello my name is " + this.branchOfHospital + ", my ID is " + this.employeeId + " and I work in branch: " + this.branchOfHospital);
+		System.out.println("Hello my name is " + this.branchOfHospital + ",  and I work in branch: " + this.branchOfHospital);
 	}
 	
 	public void takeNotesInJournal(int pageNumber, String notes) {

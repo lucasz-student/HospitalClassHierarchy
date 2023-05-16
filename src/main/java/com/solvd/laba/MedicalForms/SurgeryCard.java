@@ -33,8 +33,7 @@ public class SurgeryCard extends MedicalForms{
 	}
 
 	@Override
-	public String[] returnForm() {
-		String[] surgeryCard = {this.age, this.name, this.surgeryName};
-		return surgeryCard;
+	public String returnForm() {
+		return "" + this.age + " " + this.name + " " + this.surgeryName;
 	}
 }

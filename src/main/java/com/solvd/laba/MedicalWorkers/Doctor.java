@@ -18,13 +18,9 @@ import com.solvd.laba.Exceptions.UnequippedToolException;
 
 public class Doctor extends MedicalEmployee {
 
-	
-
-	public Doctor(String name, int age, int DoctorID, String branchOfHospital) {
-		super(name, age, DoctorID, branchOfHospital);
+	public Doctor(String name, int age, String branchOfHospital) {
+		super(name, age, branchOfHospital);
 	}
-	
-
 	
 	public String getbranchOfHospital() {
 		return this.branchOfHospital;
@@ -46,7 +42,7 @@ public class Doctor extends MedicalEmployee {
 		}
 	}
 	
-	public WellnessForm patientCheckup(CheckupPatient patient, Sphygmomanometer bpMachine, Stethoscope stethoscope, Thermometer thermometer) throws IOException, NoAppointmentException, UnequippedToolException {
+	public WellnessForm patientCheckup(CheckupPatient patient, Sphygmomanometer bpMachine, Stethoscope stethoscope, Thermometer thermometer, Nurse nurse) throws IOException, NoAppointmentException, UnequippedToolException {
 		
 		
 		Utils.logger.error("Finding Patient in files: " + patient.getName());
@@ -55,7 +51,7 @@ public class Doctor extends MedicalEmployee {
 
 		} 
 		else if (Utils.checkFileForString(Utils.appointmentList, patient.getName()) == false) {
-			throw new NoAppointmentException("Patient not on AppointmentList");
+			throw new NoAppointmentException("Patient not on AppointmentList", true, patient, nurse, "next available", ("" + patient.getSick()));
 		}
 		else {
 			Utils.logger.info("Successfully found PatientName, returning WellnessForm");
@@ -108,6 +104,7 @@ public class Doctor extends MedicalEmployee {
 		case ("normal"):
 			System.out.println("Your blood pressure is normal\n");
 			break;
+		default: break;
 		}
 		
 		switch (wellnessSlip.getTemperature()) {
@@ -122,6 +119,7 @@ public class Doctor extends MedicalEmployee {
 		case ("normal"):
 			System.out.println("Your temperature is normal\n");
 			break;	
+		default: break;
 		}
 		
 		if (wellnessSlip.getStethoscopeReading() == "poor") {
@@ -145,6 +143,7 @@ public class Doctor extends MedicalEmployee {
 		case ("low"):
 			System.out.print("For your low BP, please take Atacand\n");
 			break;
+		default: break;
 		}
 		
 		switch (wellnessSlip.getTemperature()) {
@@ -157,6 +156,7 @@ public class Doctor extends MedicalEmployee {
 		case ("low"):
 			System.out.print("For your low Body Temperature, please take Cordarone\n");
 			break;
+		default: break;
 		}
 		
 		if (wellnessSlip.getStethoscopeReading() == "poor") { 

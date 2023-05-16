@@ -19,11 +19,11 @@ public abstract class MedicalForms {
 	
 	public abstract void printForm();
 	
-	public abstract String[] returnForm();
+	public abstract String returnForm();
 	
 	public static void printAllFormsToday() {
 		for (MedicalForms form: MedicalForms.dailyFormFolder) {
-			System.out.println(form.getClass().getSimpleName() + " : " + Arrays.toString(form.returnForm()));
+			System.out.println(form.getClass().getSimpleName() + " : " + form.returnForm());
 		}
 	}
 	

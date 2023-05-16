@@ -17,11 +17,12 @@ public abstract class MedicalEmployee {
 	public static Set<String> uniqueBranches = new HashSet<>();
 	
 	
-	public MedicalEmployee(String name, int age, int medicalID, String Branch) {
+	public MedicalEmployee(String name, int age, String Branch) {
 		this.name = name;
 		this.age = age;
-		this.medicalID = medicalID;
 		this.branchOfHospital = Branch;
+		this.medicalID = this.name.length() * age;
+		
 		MedicalEmployee.employeeMap.put(name, medicalID);
 		Utils.logger.info("New MedicalEmployee mapped" +  MedicalEmployee.employeeMap);
 		MedicalEmployee.uniqueBranches.add(Branch);
@@ -53,11 +54,10 @@ public abstract class MedicalEmployee {
 		if (obj == this) {
 			return true;
 		}
-	
-        if(obj == null || obj.getClass()!= this.getClass())
+        if((obj == null) || (obj.getClass()!= this.getClass())) {
             return false;
-		
-		if (obj.hashCode() == this.hashCode()) {
+        }
+		if ((obj.hashCode() == this.hashCode()) && (obj.toString() == this.toString())) {
 			return true;
 		}
 		return false;

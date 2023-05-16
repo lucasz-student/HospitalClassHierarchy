@@ -58,10 +58,10 @@ public class SurgeryPatient implements Patient{
 		String age = Integer.toString(this.age);
 		BasicPatientForm form = new BasicPatientForm(this.name, age, this.surgeryName, time);
 		
-		BufferedWriter writer = new BufferedWriter(new FileWriter("C:/Users/lucas/OneDrive/Desktop/MavenHierarchy/my-app/src/main/java/outputFiles/PatientList.txt"));
+		BufferedWriter writer = new BufferedWriter(new FileWriter((Utils.patientList), true));
 		try  {
 			Utils.logger.info("Logging Name Patient to Patient file: " + this.name);
-			writer.write("\n" + Arrays.toString(form.returnForm()));
+			writer.write("\n" + form.returnForm());
 		} catch (IOException e) {
 
 			e.printStackTrace();

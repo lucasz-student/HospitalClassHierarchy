@@ -19,6 +19,7 @@ public class PatientNotFoundException extends Exception {
 			writer.write("Unregistered Patient action : [" + name + ":" + time + "]");
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
 	}
 	
 	public PatientNotFoundException(String message) {

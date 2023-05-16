@@ -7,8 +7,8 @@ public class Nurse extends MedicalEmployee {
 
 
 	
-	public Nurse(String name, int age, int ID, String branch) { 
-		super(name, age, ID, branch);
+	public Nurse(String name, int age, String branch) { 
+		super(name, age, branch);
 	}
 	
 	public int getID() {

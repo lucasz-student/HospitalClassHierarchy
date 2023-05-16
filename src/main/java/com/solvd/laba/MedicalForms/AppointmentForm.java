@@ -41,8 +41,7 @@ public class AppointmentForm extends MedicalForms {
 	}
 
 	@Override
-	public String[] returnForm() {
-		String[] appointmentForm = {this.age, this.name, this.time, this.sick, this.reasonForVisit};
-		return appointmentForm;
+	public String returnForm() {		
+		return "" + this.age + " " + this.name + " " + this.time + " " + this.sick + " " + this.reasonForVisit;
 	}
 }

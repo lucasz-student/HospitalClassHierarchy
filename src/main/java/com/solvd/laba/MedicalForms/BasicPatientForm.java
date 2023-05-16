@@ -24,9 +24,8 @@ public class BasicPatientForm extends MedicalForms {
 		
 
 	@Override
-	public String[] returnForm() {
-		String[] form = {this.name, this.age, this.visitPurpose, this.checkinTime};
-		return form;
+	public String returnForm() {
+		return "" + this.name + " " + this.age + " " + this.visitPurpose + " " + this.checkinTime;
 	}
 
 }
