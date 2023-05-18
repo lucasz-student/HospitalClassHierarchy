@@ -6,26 +6,26 @@ import java.io.IOException;
 
 import com.solvd.laba.Utils.Utils;
 
-public class UnregisteredSurgeryException extends Exception{
+public class UnknownSurgeryException extends Exception{
 
 	private static final long serialVersionUID = 1L;
 
-	public UnregisteredSurgeryException() {
+	public UnknownSurgeryException() {
 	}
 	
-	public UnregisteredSurgeryException(String message) {
+	public UnknownSurgeryException(String message) {
 		super(message);
 	}
 	
-	public UnregisteredSurgeryException(String message, Throwable cause) {
+	public UnknownSurgeryException(String message, Throwable cause) {
 		super(message, cause);
 	}
 	
-	public UnregisteredSurgeryException(String message, Throwable cause, String name) {
+	public UnknownSurgeryException(String message, String surgeryName) {
 		super(message);
-		Utils.logger.warn("[" + message + ":" + name +"]");
+		Utils.logger.warn("[" + message + ":" + surgeryName +"]");
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(Utils.patientList));) {
-			writer.write("\n[" + message + ":" + name +"]");
+			writer.write("\n[" + message + ":" + surgeryName +"]");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

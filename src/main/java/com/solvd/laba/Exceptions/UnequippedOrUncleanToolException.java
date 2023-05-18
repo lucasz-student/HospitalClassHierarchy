@@ -2,20 +2,20 @@ package com.solvd.laba.Exceptions;
 
 import com.solvd.laba.Utils.Utils;
 
-public class UnequippedToolException extends Exception{
+public class UnequippedOrUncleanToolException extends Exception{
 
 	private static final long serialVersionUID = 1L;
 	
-	public UnequippedToolException() {
+	public UnequippedOrUncleanToolException() {
 		Utils.logger.warn("Call Doctor method to equip tool");
 	}
 
-	public UnequippedToolException(String message) {
+	public UnequippedOrUncleanToolException(String message) {
 		super(message);
 		Utils.logger.warn("Call Doctor method to equip tool");
 	}
 	
-	public UnequippedToolException(String message, Throwable cause) {
+	public UnequippedOrUncleanToolException(String message, Throwable cause) {
 		super(message, cause);
 		Utils.logger.warn("Call Doctor method to equip tool");
 	}

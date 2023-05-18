@@ -4,25 +4,27 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 import com.solvd.laba.Exceptions.NoAppointmentException;
 import com.solvd.laba.Exceptions.ToolPermissionDeniedException;
-import com.solvd.laba.Exceptions.UnequippedToolException;
-import com.solvd.laba.MedicalForms.AppointmentForm;
-import com.solvd.laba.MedicalForms.MedicalForms;
-import com.solvd.laba.MedicalForms.WellnessForm;
-import com.solvd.laba.MedicalWorkers.Doctor;
-import com.solvd.laba.MedicalWorkers.GeneralSurgeon;
-import com.solvd.laba.MedicalWorkers.Intern;
-import com.solvd.laba.MedicalWorkers.MedicalEmployee;
-import com.solvd.laba.MedicalWorkers.Nurse;
+import com.solvd.laba.Exceptions.UnequippedOrUncleanToolException;
 import com.solvd.laba.NonMedicalWorkers.Janitor;
 import com.solvd.laba.NonMedicalWorkers.SurgeryRoomSanitizor;
-import com.solvd.laba.Patients.CheckupPatient;
-import com.solvd.laba.Patients.SurgeryPatient;
 import com.solvd.laba.Tools.Sphygmomanometer;
 import com.solvd.laba.Tools.Stethoscope;
 import com.solvd.laba.Tools.Thermometer;
+import com.solvd.laba.Utils.Days;
 import com.solvd.laba.Utils.Utils;
 
-public class InstantiateObjects {
+import Entities.AppointmentForm;
+import Entities.Doctor;
+import Entities.GeneralSurgeon;
+import Entities.Intern;
+import Entities.MedicalEmployee;
+import Entities.MedicalForms;
+import Entities.Nurse;
+import Entities.RegularPatient;
+import Entities.SurgeryPatient;
+import Entities.WellnessForm;
+
+public class Main {
 	
 	public static void main(String[] args) throws IOException {	
 		
@@ -36,13 +38,13 @@ public class InstantiateObjects {
 		Nurse nurseEmma = new Nurse("Emma", 32, "Urgent Care");
 		Nurse nurseEric = new Nurse("Emma", 31, "Urgent Care");
 		
-		CheckupPatient patientJohn = new CheckupPatient("John", 30, false, "Checkup With Doctor");
+		RegularPatient patientJohn = new RegularPatient("John", 30, false, "Checkup With Doctor");
 		patientJohn.checkIn();
-		patientJohn.fillOutPatientForm("11:am");
-		AppointmentForm AppointmentSlip  = patientJohn.scheduleAppointmentWithNurse(nurseEmma, "11:am", "not sick");
+		patientJohn.fillOutPatientForm("11:am", Days.MONDAY);
+		AppointmentForm AppointmentSlip  = patientJohn.scheduleAppointmentWithNurse(nurseEmma, "11:am", "not sick", Days.MONDAY);
 		nurseEmma.comfirmAppointmentWithDoctor(patientJohn, doctorPaul, AppointmentSlip);
 		
-		Stethoscope stethoscope = new Stethoscope(true, 5, doctorPaul);
+		Stethoscope stethoscope = new Stethoscope(5, doctorPaul);
 		Sphygmomanometer BPMachine = new Sphygmomanometer("pocket-aneroid", 5, doctorPaul);
 		Thermometer thermometer = new Thermometer("forehead-scan", 5, doctorPaul);
 		
@@ -55,15 +57,15 @@ public class InstantiateObjects {
 		}
 
 		
-		CheckupPatient patientGreg = new CheckupPatient("Greg", 31, true, "checkup, diagnosis, and appointment");
+		RegularPatient patientGreg = new RegularPatient("Greg", 31, true, "checkup, diagnosis, and appointment");
 		patientGreg.checkIn();
-		patientGreg.fillOutPatientForm("12:pm");
+		patientGreg.fillOutPatientForm("12:pm", Days.FRIDAY);
 		WellnessForm WellnessSlip;
 		try {
-			WellnessSlip = doctorPaul.patientCheckup(patientGreg, BPMachine, stethoscope, thermometer, nurseEmma);
+			WellnessSlip = doctorPaul.patientCheckup(patientGreg, BPMachine, stethoscope, thermometer, nurseEmma, Days.FRIDAY);
 			doctorPaul.diagnosePatient(patientGreg, WellnessSlip);
 			doctorPaul.prescribeMedicine(patientGreg, WellnessSlip);
-		} catch (IOException | NoAppointmentException | UnequippedToolException e) {
+		} catch (IOException | NoAppointmentException | UnequippedOrUncleanToolException e) {
 			e.printStackTrace();
 		}
 
@@ -73,10 +75,10 @@ public class InstantiateObjects {
 		
 		WellnessForm WellnessSlip1;
 		try {
-			WellnessSlip1 = doctorPaul.patientCheckup(patientJohn, BPMachine, stethoscope, thermometer, nurseEmma);
+			WellnessSlip1 = doctorPaul.patientCheckup(patientJohn, BPMachine, stethoscope, thermometer, nurseEmma, Days.THURSDAY);
 			doctorPaul.diagnosePatient(patientJohn, WellnessSlip1);
 			doctorPaul.prescribeMedicine(patientJohn, WellnessSlip1);
-		} catch (IOException | NoAppointmentException | UnequippedToolException e) {
+		} catch (IOException | NoAppointmentException | UnequippedOrUncleanToolException e) {
 			e.printStackTrace();
 		}
 
@@ -84,15 +86,15 @@ public class InstantiateObjects {
 		System.out.println("\n");
 		
 		
-		CheckupPatient patientJames = new CheckupPatient("James", 11, false, "Check internals");
+		RegularPatient patientJames = new RegularPatient("James", 11, false, "Check internals");
 		patientJames.checkIn();
-		patientJames.fillOutPatientForm("1 pm");
+		patientJames.fillOutPatientForm("1 pm", Days.WEDNESDAY);
 		System.out.println("\n");
 		try {
 			BPMachine.measureBP(patientJames, doctorPaul);
 			stethoscope.listen(patientJames, doctorPaul);
 			thermometer.measureTemp(patientJames, doctorPaul);
-		} catch (UnequippedToolException e) {			e.printStackTrace();
+		} catch (UnequippedOrUncleanToolException e) {			e.printStackTrace();
 		}
 
 		
@@ -101,7 +103,7 @@ public class InstantiateObjects {
 
 		
 		SurgeryPatient surgeryPatientElijiah = new SurgeryPatient("Elijiah", 25, "Appendectomy");
-		surgeryPatientElijiah.fillOutPatientForm("5:00pm"); 
+		surgeryPatientElijiah.fillOutPatientForm("5:00pm", Days.FRIDAY); 
 		GeneralSurgeon surgeonSaul = new GeneralSurgeon("Saul", 15, "General Surgery", "Appendectomy");
 		String[] Surgerycard = surgeryPatientElijiah.SurgeryCardFromNurse(nurseEmma);
 		sanitizorJacob.sterilizeSurguryRoom(surgeonSaul);

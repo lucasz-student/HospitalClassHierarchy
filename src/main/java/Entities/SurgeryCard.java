@@ -1,18 +1,16 @@
-package com.solvd.laba.MedicalForms;
+package Entities;
 
-import java.util.Arrays;
-
+import com.solvd.laba.Utils.Days;
 import com.solvd.laba.Utils.Utils;
 
 public class SurgeryCard extends MedicalForms{
 
 	protected String surgeryName;
-	public SurgeryCard(String age, String name, String surgeryName) {
-		super(age, name);
+	public SurgeryCard(String age, String name, String surgeryName, Days day) {
+		super(age, name, day);
 		this.surgeryName = surgeryName;
 		Utils.logger.info("Constructing Surgery Card");
 	}
-	
 	
 	public String getAge() {
 		return this.age;
@@ -28,12 +26,11 @@ public class SurgeryCard extends MedicalForms{
 
 	@Override
 	public void printForm() {
-		String[] form = {this.age, this.name, this.surgeryName};
-		System.out.print(Arrays.toString(form));
+		System.out.print("" + this.age + " " + this.name + " " + this.surgeryName+ " " + this.day);
 	}
 
 	@Override
 	public String returnForm() {
-		return "" + this.age + " " + this.name + " " + this.surgeryName;
+		return "" + this.age + " " + this.name + " " + this.surgeryName+ " " + this.day;
 	}
 }

@@ -1,12 +1,10 @@
-package com.solvd.laba.Patients;
+package Entities;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
 
-import com.solvd.laba.MedicalForms.BasicPatientForm;
-import com.solvd.laba.MedicalWorkers.Nurse;
+import com.solvd.laba.Utils.Days;
 import com.solvd.laba.Utils.Utils;
 
 public class SurgeryPatient implements Patient{
@@ -14,6 +12,7 @@ public class SurgeryPatient implements Patient{
 	private String name;
 	private int age;
 	private String surgeryName;
+	@SuppressWarnings("unused")
 	private boolean surgeryCompletion;
 	
 	public SurgeryPatient(String name, int age, String surgeryName) {
@@ -54,9 +53,9 @@ public class SurgeryPatient implements Patient{
 	}
 
 	@Override
-	public void fillOutPatientForm(String time) throws IOException {
+	public void fillOutPatientForm(String time, Days day) throws IOException {
 		String age = Integer.toString(this.age);
-		BasicPatientForm form = new BasicPatientForm(this.name, age, this.surgeryName, time);
+		BasicPatientForm form = new BasicPatientForm(this.name, age, this.surgeryName, time, day);
 		
 		BufferedWriter writer = new BufferedWriter(new FileWriter((Utils.patientList), true));
 		try  {

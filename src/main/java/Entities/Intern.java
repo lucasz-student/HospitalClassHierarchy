@@ -1,12 +1,13 @@
-package com.solvd.laba.MedicalWorkers;
+package Entities;
 
+import com.solvd.laba.Utils.BranchesOfHospital;
 import com.solvd.laba.Utils.LinkedListNotepad;
 
 public class Intern extends MedicalEmployee{
 	
 	private LinkedListNotepad<String> notesJournal = new LinkedListNotepad<>();
 	
-	public Intern(String name, int age, String branchOfHospital) {
+	public Intern(String name, int age, BranchesOfHospital branchOfHospital) {
 		super(name, age, branchOfHospital);
 	}
 	
@@ -16,10 +17,6 @@ public class Intern extends MedicalEmployee{
 	
 	public int getId() {
 		return this.medicalID;
-	}
-	
-	public void setBranch(String branch) { 
-		this.branchOfHospital = branch;
 	}
 	
 	public void identifySelf() {

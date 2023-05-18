@@ -1,12 +1,14 @@
 package com.solvd.laba.Tools;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-import com.solvd.laba.Exceptions.ToolPermissionDeniedException;
-import com.solvd.laba.Exceptions.UnequippedToolException;
-import com.solvd.laba.MedicalWorkers.Doctor;
-import com.solvd.laba.Patients.CheckupPatient;
-import com.solvd.laba.Utils.Utils;
+import com.solvd.laba.Exceptions.UnequippedOrUncleanToolException;
+import com.solvd.laba.Utils.Sanitization;
+import com.solvd.laba.Utils.ToolReadings;
+
+import Entities.Doctor;
+import Entities.RegularPatient;
 
 public final class Stethoscope implements Tools {
 	
@@ -14,23 +16,23 @@ public final class Stethoscope implements Tools {
 		System.out.print("This Stethoscope can only be owned and operated by a Doctor; please Equip the tool to use\n");
 	};
 	
-	private boolean clean; 
 	private int toolAge;
 	public boolean equipped;
 	private Doctor owner;
+	private Sanitization clean;
 	
-	public Stethoscope(boolean clean, int toolAge, Doctor owner) {
-		this.clean = clean;
+	public Stethoscope(int toolAge, Doctor owner) {
 		this.toolAge = toolAge;
 		this.equipped = false;
 		this.owner = owner;
+		this.clean = Sanitization.UNCLEAN;
 	}
 	
 	public int getAge() {
 		return this.toolAge;
 	}
 	
-	public void setClean(boolean clean) {
+	public void setClean(Sanitization clean) {
 		this.clean = clean;
 	}
 	
@@ -39,30 +41,44 @@ public final class Stethoscope implements Tools {
 		return this.owner;
 	}
 	
-	public String listen() throws UnequippedToolException {
-		if (this.equipped) {
-		String[] arraySound = {"poor", "normal"};
+	public ToolReadings listen() throws UnequippedOrUncleanToolException {
+		if ((this.equipped) && (this.clean == Sanitization.CLEAN)) {
+		ArrayList<ToolReadings> arraySound = new ArrayList<>();
+		arraySound.add(ToolReadings.POOR);
+		arraySound.add(ToolReadings.NORMAL);
 		Random random = new Random(); 
-		int index = random.nextInt(arraySound.length);
-		return arraySound[index];
-		} 
+		int index = random.nextInt(arraySound.size());
+		return arraySound.get(index);
+		}
 		else {
-			throw new UnequippedToolException("Tool Unequipped");
+			throw new UnequippedOrUncleanToolException("Tool Unequipped or Unclean");
 		}
 	}
 	
-	public void listen(CheckupPatient patient, Doctor doctor) throws UnequippedToolException {
-		if (this.equipped) {
+	public void listen(RegularPatient patient, Doctor doctor) throws UnequippedOrUncleanToolException {
+		if ((this.equipped) && (this.clean == Sanitization.CLEAN)) {
 		String[] arraySound = {"poor", "normal"};
 		Random random = new Random(); 
 		int index = random.nextInt(arraySound.length);
 		System.out.println("\nHello, " + patient.getName());
 		System.out.println("Your internal sounds are " + arraySound[index] + "");
-		} else {throw new UnequippedToolException("Tool Unequipped");};
+		} else {
+			throw new UnequippedOrUncleanToolException("Tool Unequipped or Unclean");
+		}
 	}
 
 	@Override
 	public void equipTool() {
 		this.equipped = true;
+	}
+	@Override
+	public void cleanTool() {
+		if (CleaningQueue.peek() == this) {
+		System.out.print("\nThis tool has been cleaned");
+		this.clean = Sanitization.CLEAN;
+		CleaningQueue.poll();
+		} else {
+			System.out.print("\nThis tool is not next in the queue line");
+		}
 	}
 }

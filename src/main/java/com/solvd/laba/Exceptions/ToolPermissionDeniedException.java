@@ -1,7 +1,5 @@
 package com.solvd.laba.Exceptions;
 
-import com.solvd.laba.Utils.Utils;
-
 public class ToolPermissionDeniedException extends Exception {
 
 	private static final long serialVersionUID = 1L;

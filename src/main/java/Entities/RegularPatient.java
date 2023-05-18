@@ -1,23 +1,19 @@
-package com.solvd.laba.Patients;
+package Entities;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.Arrays;
 
-import com.solvd.laba.MedicalForms.AppointmentForm;
-import com.solvd.laba.MedicalForms.BasicPatientForm;
-import com.solvd.laba.MedicalWorkers.Nurse;
+import com.solvd.laba.Utils.Days;
 import com.solvd.laba.Utils.Utils;
 
-public class CheckupPatient implements Patient{
+public class RegularPatient implements Patient{
 	private String name;
 	private int age; 
 	private boolean sick; 
 	private String reasonForVisit;
 	
-	public CheckupPatient(String name, int age, boolean sick, String reasonForVisit) {
+	public RegularPatient(String name, int age, boolean sick, String reasonForVisit) {
 		this.name = name; 
 		this.age = age;
 		this.sick = sick;
@@ -40,14 +36,14 @@ public class CheckupPatient implements Patient{
 		return this.sick;
 	}
 	
-	public AppointmentForm scheduleAppointmentWithNurse(Nurse nurse, String time, String sick) throws IOException {
+	public AppointmentForm scheduleAppointmentWithNurse(Nurse nurse, String time, String sick, Days day) throws IOException {
 		String age = Integer.toString(this.age);
 		if (this.sick) { 
 			sick = "Sick";
 		} else {
 			sick = "Not sick";
 		}
-		AppointmentForm appointmentForm = new AppointmentForm(age, this.name, time, sick, this.reasonForVisit);
+		AppointmentForm appointmentForm = new AppointmentForm(age, this.name, time, sick, this.reasonForVisit, day);
 		
 		BufferedWriter writer = new BufferedWriter(new FileWriter(Utils.appointmentList, true));
 		try  {
@@ -75,10 +71,10 @@ public class CheckupPatient implements Patient{
 	}
 
 	@Override
-	public void fillOutPatientForm(String time) throws IOException{
+	public void fillOutPatientForm(String time, Days day) throws IOException{
 		String age = Integer.toString(this.age);
 		Utils.logger.info("Logging Patient's name to Patient file: " + this.name);
-		BasicPatientForm form = new BasicPatientForm(this.name, age, this.reasonForVisit, time);
+		BasicPatientForm form = new BasicPatientForm(this.name, age, this.reasonForVisit, time, day);
 		
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(Utils.patientList, true));) {
 			writer.write("\n" + form.returnForm());
@@ -87,5 +83,4 @@ public class CheckupPatient implements Patient{
 		}
 		form.printForm();
 	}
-
 }

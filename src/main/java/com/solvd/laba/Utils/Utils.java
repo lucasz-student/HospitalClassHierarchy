@@ -15,12 +15,12 @@ import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.solvd.laba.InstantiateObjects;
+import com.solvd.laba.Main;
 
 
 public class Utils {
 	
-	public static Logger logger = LogManager.getLogger(InstantiateObjects.class);
+	public static Logger logger = LogManager.getLogger(Main.class);
 	
 	public static final String patientList = "C:/Users/lucas/OneDrive/Desktop/MavenHierarchy/my-app/src/main/java/outputFiles/PatientList.txt";
 	public static final String appointmentList = "C:/Users/lucas/OneDrive/Desktop/MavenHierarchy/my-app/src/main/java/outputFiles/AppointmentList.txt";

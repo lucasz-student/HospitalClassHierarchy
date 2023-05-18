@@ -3,8 +3,7 @@ package com.solvd.laba.Tools;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import com.solvd.laba.Exceptions.ToolPermissionDeniedException;
-import com.solvd.laba.MedicalWorkers.Doctor;
+import Entities.Doctor;
 
 public interface Tools {
 	
@@ -16,14 +15,7 @@ public interface Tools {
 		CleaningQueue.add(this);
 	};
 	
-	default public void cleanTool() {
-		if (CleaningQueue.peek() == this) {
-		System.out.print("\nThis tool has been cleaned");
-		CleaningQueue.poll();
-		} else {
-			System.out.print("\nThis tool is not next in the queue line");
-		}
-	};
+	public void cleanTool();
 
 	public void equipTool();
 	

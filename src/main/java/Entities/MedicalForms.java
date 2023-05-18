@@ -1,19 +1,21 @@
-package com.solvd.laba.MedicalForms;
+package Entities;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
+import com.solvd.laba.Utils.Days;
 import com.solvd.laba.Utils.Utils;
 
 public abstract class MedicalForms {
 	protected String age; 
 	protected String name;
+	protected Days day;
 	
 	public static final ArrayList<MedicalForms> dailyFormFolder = new ArrayList<>();
 	
-	
-	public MedicalForms(String age, String name) {
+	public MedicalForms(String age, String name, Days day) {
 		this.age = age;
 		this.name = name;
+		this.day = day;
 		dailyFormFolder.add(this);
 	}
 	

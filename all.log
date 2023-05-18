@@ -1,25 +1,24 @@
-2023-05-16 00:19:31.632 [main] INFO  com.solvd.laba.InstantiateObjects - Testing program...
-2023-05-16 00:19:31.636 [main] INFO  com.solvd.laba.InstantiateObjects - New MedicalEmployee mapped{Paul=180}
-2023-05-16 00:19:31.636 [main] INFO  com.solvd.laba.InstantiateObjects - New MedicalEmployee mapped{Paul=180, Exception=315}
-2023-05-16 00:19:31.637 [main] INFO  com.solvd.laba.InstantiateObjects - New MedicalEmployee mapped{Paul=180, Emma=128, Exception=315}
-2023-05-16 00:19:31.637 [main] INFO  com.solvd.laba.InstantiateObjects - New MedicalEmployee mapped{Paul=180, Emma=124, Exception=315}
-2023-05-16 00:19:31.638 [main] INFO  com.solvd.laba.InstantiateObjects - Logging Patient's name to Patient file: John
-2023-05-16 00:19:31.639 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Patient Form
-2023-05-16 00:19:31.640 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Appointment Form
-2023-05-16 00:19:31.640 [main] INFO  com.solvd.laba.InstantiateObjects - Logging Name Patient to Appointment file: John
-2023-05-16 00:19:35.342 [main] INFO  com.solvd.laba.InstantiateObjects - Logging Patient's name to Patient file: Greg
-2023-05-16 00:19:35.342 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Patient Form
-2023-05-16 00:19:35.343 [main] ERROR com.solvd.laba.InstantiateObjects - Finding Patient in files: Greg
-2023-05-16 00:19:35.344 [main] INFO  com.solvd.laba.InstantiateObjects - Successfully found PatientName, returning WellnessForm
-2023-05-16 00:19:35.345 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Wellness Form
-2023-05-16 00:19:35.345 [main] INFO  com.solvd.laba.InstantiateObjects - Successfully Diagnosing patient
-2023-05-16 00:19:35.345 [main] ERROR com.solvd.laba.InstantiateObjects - Finding Patient in files: John
-2023-05-16 00:19:35.346 [main] INFO  com.solvd.laba.InstantiateObjects - Successfully found PatientName, returning WellnessForm
-2023-05-16 00:19:35.346 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Wellness Form
-2023-05-16 00:19:35.346 [main] INFO  com.solvd.laba.InstantiateObjects - Successfully Diagnosing patient
-2023-05-16 00:19:35.346 [main] INFO  com.solvd.laba.InstantiateObjects - Logging Patient's name to Patient file: James
-2023-05-16 00:19:35.347 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Patient Form
-2023-05-16 00:19:35.348 [main] INFO  com.solvd.laba.InstantiateObjects - Constructing Patient Form
-2023-05-16 00:19:35.348 [main] INFO  com.solvd.laba.InstantiateObjects - Logging Name Patient to Patient file: Elijiah
-2023-05-16 00:19:35.349 [main] INFO  com.solvd.laba.InstantiateObjects - New MedicalEmployee mapped{Saul=60, Paul=180, Emma=124, Exception=315}
-2023-05-16 00:19:35.351 [main] INFO  com.solvd.laba.InstantiateObjects - New MedicalEmployee mapped{Saul=60, Paul=180, Emma=124, Jane=96, Exception=315}
+2023-05-18 00:37:20.111 [main] INFO  com.solvd.laba.Main - Testing program...
+2023-05-18 00:37:20.115 [main] INFO  com.solvd.laba.Main - New MedicalEmployee mapped{Paul=180}
+2023-05-18 00:37:20.116 [main] INFO  com.solvd.laba.Main - New MedicalEmployee mapped{Paul=180, Exception=315}
+2023-05-18 00:37:20.116 [main] INFO  com.solvd.laba.Main - New MedicalEmployee mapped{Paul=180, Emma=128, Exception=315}
+2023-05-18 00:37:20.116 [main] INFO  com.solvd.laba.Main - New MedicalEmployee mapped{Paul=180, Emma=124, Exception=315}
+2023-05-18 00:37:20.118 [main] INFO  com.solvd.laba.Main - Logging Patient's name to Patient file: John
+2023-05-18 00:37:20.119 [main] INFO  com.solvd.laba.Main - Constructing Patient Form
+2023-05-18 00:37:20.120 [main] INFO  com.solvd.laba.Main - Constructing Appointment Form
+2023-05-18 00:37:20.120 [main] INFO  com.solvd.laba.Main - Logging Name Patient to Appointment file: John
+2023-05-18 00:37:22.244 [main] INFO  com.solvd.laba.Main - Logging Patient's name to Patient file: Greg
+2023-05-18 00:37:22.245 [main] INFO  com.solvd.laba.Main - Constructing Patient Form
+2023-05-18 00:37:22.245 [main] ERROR com.solvd.laba.Main - Finding Patient in files: Greg
+2023-05-18 00:37:22.246 [main] INFO  com.solvd.laba.Main - Constructing Appointment Form
+2023-05-18 00:37:22.246 [main] INFO  com.solvd.laba.Main - Logging Name Patient to Appointment file: Greg
+2023-05-18 00:37:22.247 [main] ERROR com.solvd.laba.Main - Finding Patient in files: John
+2023-05-18 00:37:22.247 [main] INFO  com.solvd.laba.Main - Successfully found PatientName, returning WellnessForm
+2023-05-18 00:37:22.248 [main] INFO  com.solvd.laba.Main - Constructing Wellness Form
+2023-05-18 00:37:22.248 [main] INFO  com.solvd.laba.Main - Successfully Diagnosing patient
+2023-05-18 00:37:22.249 [main] INFO  com.solvd.laba.Main - Logging Patient's name to Patient file: James
+2023-05-18 00:37:22.249 [main] INFO  com.solvd.laba.Main - Constructing Patient Form
+2023-05-18 00:37:22.250 [main] INFO  com.solvd.laba.Main - Constructing Patient Form
+2023-05-18 00:37:22.250 [main] INFO  com.solvd.laba.Main - Logging Name Patient to Patient file: Elijiah
+2023-05-18 00:37:22.251 [main] INFO  com.solvd.laba.Main - New MedicalEmployee mapped{Saul=60, Paul=180, Emma=124, Exception=315}
+2023-05-18 00:37:22.253 [main] INFO  com.solvd.laba.Main - New MedicalEmployee mapped{Saul=60, Paul=180, Emma=124, Jane=96, Exception=315}

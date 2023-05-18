@@ -1,10 +1,10 @@
-package com.solvd.laba.MedicalWorkers;
+package Entities;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.solvd.laba.MedicalForms.MedicalForms;
+import com.solvd.laba.Utils.BranchesOfHospital;
 import com.solvd.laba.Utils.Utils;
 
 public abstract class MedicalEmployee {
@@ -12,12 +12,12 @@ public abstract class MedicalEmployee {
 	protected String name;
 	protected int age;
 	protected int medicalID;
-	protected String branchOfHospital;
+	protected BranchesOfHospital branchOfHospital;
 	public static HashMap<String, Integer> employeeMap = new HashMap<>();
-	public static Set<String> uniqueBranches = new HashSet<>();
+	public static Set<BranchesOfHospital> uniqueBranches = new HashSet<>();
 	
 	
-	public MedicalEmployee(String name, int age, String Branch) {
+	public MedicalEmployee(String name, int age, BranchesOfHospital Branch) {
 		this.name = name;
 		this.age = age;
 		this.branchOfHospital = Branch;
@@ -34,9 +34,29 @@ public abstract class MedicalEmployee {
 	}
 	
 	public static void printUniqueBranches() {
-		for (String branch: MedicalEmployee.uniqueBranches) {
+		for (BranchesOfHospital branch: MedicalEmployee.uniqueBranches) {
 			System.out.println(branch);
 		}
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public int getAge() {
+		return this.age;
+	}
+	
+	public int getID() {
+		return this.medicalID;
+	}
+	
+	public BranchesOfHospital getBranch() {
+		return this.branchOfHospital;
+	}
+	
+	public void setBranch(BranchesOfHospital branch) { 
+		this.branchOfHospital = branch;
 	}
 	
 	@Override

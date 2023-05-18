@@ -1,7 +1,6 @@
-package com.solvd.laba.MedicalForms;
+package Entities;
 
-import java.util.Arrays;
-
+import com.solvd.laba.Utils.Days;
 import com.solvd.laba.Utils.Utils;
 
 public class AppointmentForm extends MedicalForms {
@@ -9,8 +8,8 @@ public class AppointmentForm extends MedicalForms {
 	protected String reasonForVisit; 
 	protected String time; 
 	
-	public AppointmentForm(String age, String name, String time, String sick, String reasonForVisit) {
-		super(age, name);
+	public AppointmentForm(String age, String name, String time, String sick, String reasonForVisit, Days day) {
+		super(age, name, day);
 		this.time = time; 
 		this.sick = sick; 
 		this.reasonForVisit = reasonForVisit;
@@ -36,12 +35,11 @@ public class AppointmentForm extends MedicalForms {
 
 	@Override
 	public void printForm() {
-		String[] form = {this.age, this.name, this.time, this.sick, this.reasonForVisit};
-		System.out.println(Arrays.toString(form));
+		System.out.println("" + this.age + " " + this.name + " " + this.time + " " + this.sick + " " + this.reasonForVisit+ " " + this.day);
 	}
 
 	@Override
 	public String returnForm() {		
-		return "" + this.age + " " + this.name + " " + this.time + " " + this.sick + " " + this.reasonForVisit;
+		return "" + this.age + " " + this.name + " " + this.time + " " + this.sick + " " + this.reasonForVisit+ " " + this.day;
 	}
 }
