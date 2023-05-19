@@ -66,13 +66,9 @@ public final class Sphygmomanometer implements Tools {
 	}
 
 	@Override
-	public void equipTool() {
-		this.equipped = true;
-	}
-	@Override
 	public void cleanTool() {
 		if (CleaningQueue.peek() == this) {
-		System.out.print("\nThis tool has been cleaned");
+		System.out.print("\nThis tool has been cleaned\n");
 		this.clean = Sanitization.CLEAN;
 		CleaningQueue.poll();
 		} else {

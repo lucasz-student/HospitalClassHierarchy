@@ -1,5 +1,7 @@
 package Entities;
 
+import java.util.function.Function;
+
 import com.solvd.laba.Utils.BranchesOfHospital;
 import com.solvd.laba.Utils.LinkedListNotepad;
 
@@ -37,5 +39,9 @@ public class Intern extends MedicalEmployee{
 	
 	public void openNotePad() {
 		this.notesJournal.displayList();
+	}
+	
+	public void changeAllNoteValues(Function<String, String> function) {
+		this.notesJournal.changeAllNodeValues(function);
 	}
 }

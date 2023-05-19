@@ -9,11 +9,11 @@ public class GeneralSurgeon extends MedicalEmployee{
 	
 
 	private boolean surgeryRoomSterileStatus;
-	private List<Patient> patientList = new ArrayList<>();
+	private List<SurgeryPatient> patientList = new ArrayList<>();
 	private List<SurgeryCard> appointmentList = new ArrayList<>();
 	private List<String> knownSurgeries = new ArrayList<>();
 	
-	public GeneralSurgeon(String name, int age, BranchesOfHospital branchOfHospital,  String SurgerySpecialty, List<String> knownSurgeries) {
+	public GeneralSurgeon(String name, int age, BranchesOfHospital branchOfHospital, List<String> knownSurgeries) {
 		super(name, age, branchOfHospital);
 		this.surgeryRoomSterileStatus = false;
 		this.knownSurgeries = knownSurgeries;
@@ -27,11 +27,11 @@ public class GeneralSurgeon extends MedicalEmployee{
 		this.appointmentList.add(form);
 	}
 	
-	public void addPatient(Patient patient) {
+	public void addPatient(SurgeryPatient patient) {
 		this.patientList.add(patient);
 	}
 	
-	public List<Patient> getPatientList() {
+	public List<SurgeryPatient> getPatientList() {
 		return this.patientList;
 	}
 	

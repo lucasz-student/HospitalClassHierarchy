@@ -23,10 +23,16 @@ public abstract class MedicalForms {
 	
 	public abstract String returnForm();
 	
+	public Days getDay() {
+		return this.day;
+	}
+	
+	public void setDay(Days day) {
+		this.day = day;
+	}
+	
 	public static void printAllFormsToday() {
-		for (MedicalForms form: MedicalForms.dailyFormFolder) {
-			System.out.println(form.getClass().getSimpleName() + " : " + form.returnForm());
-		}
+		dailyFormFolder.forEach((form) -> System.out.println(form.getClass().getSimpleName() + " : " + form.returnForm()));
 	}
 	
 	public static void clearAllFormsForDay() {

@@ -30,7 +30,6 @@ public class Utils {
 	public static boolean checkFileForString(String filePath, String target) throws IOException {
 		
 		try(BufferedReader reader = new BufferedReader(new FileReader(filePath));) {
-			
 			String line = reader.readLine();
 			while (line != null) {
 				if (line.contains(target)) {
@@ -39,8 +38,7 @@ public class Utils {
 			line = reader.readLine();
 			}
 			return false;
-		} 
-		
+		} 	
 	}
 	
 	public static void flushOutput() throws IOException {
@@ -75,7 +73,6 @@ public class Utils {
 			try {
 				FileUtils.writeStringToFile((new File(destinationPath)), "\n" + string, true);
 			} catch (IOException e) {
-
 				e.printStackTrace();
 			}
 		});

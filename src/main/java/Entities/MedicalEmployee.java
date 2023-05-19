@@ -34,9 +34,7 @@ public abstract class MedicalEmployee {
 	}
 	
 	public static void printUniqueBranches() {
-		for (BranchesOfHospital branch: MedicalEmployee.uniqueBranches) {
-			System.out.println(branch);
-		}
+		MedicalEmployee.uniqueBranches.forEach((branch) -> System.out.println(branch));
 	}
 	
 	public String getName() {

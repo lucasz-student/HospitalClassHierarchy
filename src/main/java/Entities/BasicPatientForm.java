@@ -14,7 +14,7 @@ public class BasicPatientForm extends MedicalForms {
 		this.checkinTime = checkinTime;
 		Utils.logger.info("Constructing Patient Form");
 	}
-
+	
 	@Override
 	public void printForm() {
 		System.out.println("" + this.name + " " + this.age + " " + this.visitPurpose + " " + this.checkinTime+ " " + this.day);

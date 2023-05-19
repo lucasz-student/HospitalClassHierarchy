@@ -1,5 +1,8 @@
 package com.solvd.laba.Utils;
 
+import java.util.function.Consumer;
+import java.util.function.Function;
+
 public class LinkedListNotepad<T> {
 
 	private Node<T> head;
@@ -16,7 +19,6 @@ public class LinkedListNotepad<T> {
 	
 	public void add(T data) {
 		Node<T> newNode = new Node<T>(data); 
-		
 		if (head == null) {
 			head = newNode;
 		} else {
@@ -52,7 +54,7 @@ public class LinkedListNotepad<T> {
 	}
 	
 	public void displayList() {
-		if (head!=null) {
+		if (head != null) {
 			Node<T> node = head; 
 			while(node.next != null) {	
 				System.out.println("| "+ node.value + " |");
@@ -60,5 +62,16 @@ public class LinkedListNotepad<T> {
 			}
 			System.out.println("| "+ node.value + " |");
 		}
+	}
+	
+	public void changeAllNodeValues(Function<T, T> function) {
+		if (head != null){
+			Node<T> current = head;
+			while (current.next != null) {
+				current.value = function.apply(current.value);
+				current = current.next;
+			}
+			current.value = function.apply(current.value);
+		} 
 	}
 }

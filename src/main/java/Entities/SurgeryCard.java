@@ -6,7 +6,7 @@ import com.solvd.laba.Utils.Utils;
 public class SurgeryCard extends MedicalForms{
 
 	protected String surgeryName;
-	public SurgeryCard(String age, String name, String surgeryName, Days day) {
+	public SurgeryCard(String age, String name, Days day, String surgeryName) {
 		super(age, name, day);
 		this.surgeryName = surgeryName;
 		Utils.logger.info("Constructing Surgery Card");

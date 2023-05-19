@@ -1,11 +1,12 @@
 package com.solvd.laba.Utils;
 
 public enum ToolReadings {
-
-	POOR(0),
-	LOW(0),
-	NORMAL(1),
-	HIGH(2);
+	
+	UNDIAGNOSED(0),
+	POOR(1),
+	LOW(2),
+	NORMAL(3),
+	HIGH(4);
 	
 	private int ReadingCode; 
 	

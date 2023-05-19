@@ -10,12 +10,12 @@ import com.solvd.laba.Tools.Sphygmomanometer;
 import com.solvd.laba.Tools.Stethoscope;
 import com.solvd.laba.Tools.Thermometer;
 import com.solvd.laba.Utils.Days;
+import com.solvd.laba.Utils.Sickness;
 import com.solvd.laba.Utils.ToolReadings;
 import com.solvd.laba.Utils.Utils;
 import Entities.AppointmentForm;
 import Entities.Doctor;
 import Entities.Nurse;
-import Entities.Patient;
 import Entities.RegularPatient;
 import Entities.WellnessForm;
 
@@ -27,7 +27,7 @@ public class DoctorServices {
 		this.doctor = doctor;
 	}
 	
-	public boolean comfirmAppointment(AppointmentForm AppointmentForm, Patient patient) {
+	public boolean comfirmAppointment(AppointmentForm AppointmentForm, RegularPatient patient) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Hello Doctor " + doctor.getName() + ", do you want to comfirm an appointment with " + AppointmentForm.getName() + " at " + AppointmentForm.getTime() + "?");
 		System.out.println("Enter 0 to comfirm and 1 to decline");
@@ -50,7 +50,7 @@ public class DoctorServices {
 			throw new PatientNotFoundException();
 		} else if (Utils.checkFileForString(Utils.appointmentList, patient.getName()) == false) {
 			Utils.logger.error("This Patient is not on " + this.doctor.getName() + "'s appointment list");
-			throw new NoAppointmentException("Patient not on Appointment List", true, patient, nurse, "next available", ("" + patient.getSick()), Days.MONDAY);
+			throw new NoAppointmentException();
 		} else {
 			this.doctor.addPatient(patient);
 			Utils.logger.info("Successfully found Patient Name, returning WellnessForm");
@@ -72,14 +72,17 @@ public class DoctorServices {
 			switch (wellnessSlip.getBp()) {
 			case HIGH:
 				System.out.println("Your blood pressure is too high\n");
-				patient.setSick(true);
+				patient.setSick(Sickness.ISSICK);
+				patient.getSick().setBloodPressure(ToolReadings.HIGH);
 				break;
 			case LOW:
 				System.out.print("Your blood pressure is too low\n");
-				patient.setSick(true);
+				patient.setSick(Sickness.ISSICK);
+				patient.getSick().setBloodPressure(ToolReadings.LOW);
 				break;
 			case NORMAL:
 				System.out.println("Your blood pressure is normal\n");
+				patient.getSick().setBloodPressure(ToolReadings.NORMAL);
 				break;
 			default: break;
 			}
@@ -87,21 +90,25 @@ public class DoctorServices {
 			switch (wellnessSlip.getTemperature()) {
 			case HIGH:
 				System.out.println("You have a fever\n");
-				patient.setSick(true);
+				patient.setSick(Sickness.ISSICK);
+				patient.getSick().setTemperature(ToolReadings.HIGH);
 				break;
 			case LOW:
 				System.out.print("You have hyperthermia\n");
-				patient.setSick(true);
+				patient.setSick(Sickness.ISSICK);
+				patient.getSick().setTemperature(ToolReadings.LOW);
 				break;
 			case NORMAL:
 				System.out.println("Your temperature is normal\n");
+				patient.getSick().setTemperature(ToolReadings.NORMAL);
 				break;	
 			default: break;
 			}
 			
 			if (wellnessSlip.getStethoscopeReading() == ToolReadings.POOR) {
 				System.out.println("Something may be wrong with your heart or lungs\n");	
-				patient.setSick(true);
+				patient.setSick(Sickness.ISSICK);
+				patient.getSick().setHeartAndLungs(ToolReadings.POOR);
 			}
 			else {
 				System.out.println("Your heart and lungs sound normal\n");

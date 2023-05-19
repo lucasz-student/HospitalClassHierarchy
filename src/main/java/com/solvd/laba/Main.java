@@ -1,16 +1,21 @@
 package com.solvd.laba;
 
 import java.io.IOException;
-import org.apache.commons.io.FileUtils;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.solvd.laba.Exceptions.NoAppointmentException;
+import com.solvd.laba.Exceptions.PatientNotFoundException;
 import com.solvd.laba.Exceptions.ToolPermissionDeniedException;
 import com.solvd.laba.Exceptions.UnequippedOrUncleanToolException;
-import com.solvd.laba.NonMedicalWorkers.Janitor;
 import com.solvd.laba.NonMedicalWorkers.SurgeryRoomSanitizor;
 import com.solvd.laba.Tools.Sphygmomanometer;
 import com.solvd.laba.Tools.Stethoscope;
 import com.solvd.laba.Tools.Thermometer;
+import com.solvd.laba.Utils.BranchesOfHospital;
 import com.solvd.laba.Utils.Days;
+import com.solvd.laba.Utils.Sickness;
 import com.solvd.laba.Utils.Utils;
 
 import Entities.AppointmentForm;
@@ -21,51 +26,75 @@ import Entities.MedicalEmployee;
 import Entities.MedicalForms;
 import Entities.Nurse;
 import Entities.RegularPatient;
+import Entities.SurgeryCard;
 import Entities.SurgeryPatient;
 import Entities.WellnessForm;
+import Services.AppointmentService;
+import Services.DoctorServices;
+import Services.NurseServices;
+import Services.SurgeonServices;
 
 public class Main {
 	
-	public static void main(String[] args) throws IOException {	
+	public static void main(String[] args) throws IOException, ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, InvocationTargetException {
 		
 		Utils.logger.info("Testing program...");
 		
-		Janitor janitorLiam = new Janitor("Liam", 25);
 		SurgeryRoomSanitizor sanitizorJacob = new SurgeryRoomSanitizor("Jacob" , 30);
 
-		Doctor doctorPaul = new Doctor("Paul", 45, "Urgent Care");
-		Doctor doctorException = new Doctor("Exception", 35, "Neurology");
-		Nurse nurseEmma = new Nurse("Emma", 32, "Urgent Care");
-		Nurse nurseEric = new Nurse("Emma", 31, "Urgent Care");
+		Doctor doctorPaul = new Doctor("Paul", 45, BranchesOfHospital.GENERALCARE);
+		DoctorServices doctorPaulService = new DoctorServices(doctorPaul);
 		
-		RegularPatient patientJohn = new RegularPatient("John", 30, false, "Checkup With Doctor");
+		Nurse nurseEmma = new Nurse("Emma", 32, BranchesOfHospital.URGENTCARE);
+		Nurse nurseEric = new Nurse("Emma", 31, BranchesOfHospital.GENERALCARE);
+		NurseServices nurseEmmaServices = new NurseServices(nurseEmma);
+		
+		AppointmentService appointmentServices = new AppointmentService(Days.MONDAY);
+		RegularPatient patientJohn = new RegularPatient("John", 30, Sickness.ISNOTSICK, "Checkup With Doctor");
 		patientJohn.checkIn();
 		patientJohn.fillOutPatientForm("11:am", Days.MONDAY);
-		AppointmentForm AppointmentSlip  = patientJohn.scheduleAppointmentWithNurse(nurseEmma, "11:am", "not sick", Days.MONDAY);
-		nurseEmma.comfirmAppointmentWithDoctor(patientJohn, doctorPaul, AppointmentSlip);
+		AppointmentForm AppointmentSlip;
+		try {
+			AppointmentSlip = appointmentServices.scheduleAppointmentWithNurse(patientJohn, nurseEmma, "11:am", Sickness.ISNOTSICK, Days.MONDAY);
+			nurseEmmaServices.comfirmAppointmentWithDoctor(patientJohn, doctorPaulService, AppointmentSlip);
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		}
+		
 		
 		Stethoscope stethoscope = new Stethoscope(5, doctorPaul);
 		Sphygmomanometer BPMachine = new Sphygmomanometer("pocket-aneroid", 5, doctorPaul);
 		Thermometer thermometer = new Thermometer("forehead-scan", 5, doctorPaul);
 		
+		BPMachine.joinCleanLine();
+		thermometer.joinCleanLine();
+		stethoscope.joinCleanLine();
+		
+		BPMachine.cleanTool();
+		thermometer.cleanTool();
+		stethoscope.cleanTool();
+		
 		try {
-			doctorPaul.EquipTool(stethoscope);
-			doctorPaul.EquipTool(BPMachine);
-			doctorPaul.EquipTool(thermometer);		
+			doctorPaul.equipStethoscope(stethoscope);
+			doctorPaul.equipSphygmomanometer(BPMachine);
+			doctorPaul.equipThermometer(thermometer);		
 		} catch (ToolPermissionDeniedException e1) {
 			e1.printStackTrace();
+		} catch (NoSuchFieldException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
 		}
-
 		
-		RegularPatient patientGreg = new RegularPatient("Greg", 31, true, "checkup, diagnosis, and appointment");
+		RegularPatient patientGreg = new RegularPatient("Greg", 31, Sickness.ISSICK, "checkup, diagnosis, and appointment");
 		patientGreg.checkIn();
 		patientGreg.fillOutPatientForm("12:pm", Days.FRIDAY);
 		WellnessForm WellnessSlip;
 		try {
-			WellnessSlip = doctorPaul.patientCheckup(patientGreg, BPMachine, stethoscope, thermometer, nurseEmma, Days.FRIDAY);
-			doctorPaul.diagnosePatient(patientGreg, WellnessSlip);
-			doctorPaul.prescribeMedicine(patientGreg, WellnessSlip);
-		} catch (IOException | NoAppointmentException | UnequippedOrUncleanToolException e) {
+			WellnessSlip = doctorPaulService.patientCheckup(patientGreg, BPMachine, stethoscope, thermometer, nurseEmma, Days.FRIDAY);
+			doctorPaulService.diagnosePatient(patientGreg, WellnessSlip);
+			doctorPaulService.prescribeMedicine(patientGreg, WellnessSlip);
+		} catch (IOException | NoAppointmentException | UnequippedOrUncleanToolException | PatientNotFoundException e) {
 			e.printStackTrace();
 		}
 
@@ -75,10 +104,10 @@ public class Main {
 		
 		WellnessForm WellnessSlip1;
 		try {
-			WellnessSlip1 = doctorPaul.patientCheckup(patientJohn, BPMachine, stethoscope, thermometer, nurseEmma, Days.THURSDAY);
-			doctorPaul.diagnosePatient(patientJohn, WellnessSlip1);
-			doctorPaul.prescribeMedicine(patientJohn, WellnessSlip1);
-		} catch (IOException | NoAppointmentException | UnequippedOrUncleanToolException e) {
+			WellnessSlip1 = doctorPaulService.patientCheckup(patientJohn, BPMachine, stethoscope, thermometer, nurseEmma, Days.THURSDAY);
+			doctorPaulService.diagnosePatient(patientJohn, WellnessSlip1);
+			doctorPaulService.prescribeMedicine(patientJohn, WellnessSlip1);
+		} catch (IOException | NoAppointmentException | UnequippedOrUncleanToolException | PatientNotFoundException e) {
 			e.printStackTrace();
 		}
 
@@ -86,7 +115,7 @@ public class Main {
 		System.out.println("\n");
 		
 		
-		RegularPatient patientJames = new RegularPatient("James", 11, false, "Check internals");
+		RegularPatient patientJames = new RegularPatient("James", 11, Sickness.ISNOTSICK, "Check internals");
 		patientJames.checkIn();
 		patientJames.fillOutPatientForm("1 pm", Days.WEDNESDAY);
 		System.out.println("\n");
@@ -94,7 +123,8 @@ public class Main {
 			BPMachine.measureBP(patientJames, doctorPaul);
 			stethoscope.listen(patientJames, doctorPaul);
 			thermometer.measureTemp(patientJames, doctorPaul);
-		} catch (UnequippedOrUncleanToolException e) {			e.printStackTrace();
+		} catch (UnequippedOrUncleanToolException e) {			
+			e.printStackTrace();
 		}
 
 		
@@ -104,10 +134,22 @@ public class Main {
 		
 		SurgeryPatient surgeryPatientElijiah = new SurgeryPatient("Elijiah", 25, "Appendectomy");
 		surgeryPatientElijiah.fillOutPatientForm("5:00pm", Days.FRIDAY); 
-		GeneralSurgeon surgeonSaul = new GeneralSurgeon("Saul", 15, "General Surgery", "Appendectomy");
-		String[] Surgerycard = surgeryPatientElijiah.SurgeryCardFromNurse(nurseEmma);
+		
+		List<String> SurgeriesSaulCanPerform = new ArrayList<String>();
+		SurgeriesSaulCanPerform.add("Appendectomy");
+		SurgeriesSaulCanPerform.add("Colon Surgery");
+		SurgeriesSaulCanPerform.add("Joint replacement");
+		
+		GeneralSurgeon surgeonSaul = new GeneralSurgeon("Saul", 45, BranchesOfHospital.URGENTCARE, SurgeriesSaulCanPerform);
+		SurgeonServices surgeryServices = new SurgeonServices(surgeonSaul);
+		
+		SurgeryCard Surgerycard = appointmentServices.SurgeryAppointment(surgeonSaul, surgeryPatientElijiah, nurseEmma, Days.TUESDAY);
 		sanitizorJacob.sterilizeSurguryRoom(surgeonSaul);
-		surgeonSaul.commonSurgery(surgeryPatientElijiah, Surgerycard);
+		try {
+			surgeryServices.Surgery(surgeryPatientElijiah, Surgerycard);
+		} catch (NoAppointmentException | PatientNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 
 		System.out.println(doctorPaul);
@@ -124,26 +166,27 @@ public class Main {
 		System.out.println("\n");
 		
 		
-		Nurse.askQuestion("What is the name of this Hospital");
-		Nurse.askQuestion("What hours does this hospital operate?");
-		Nurse.askQuestion("What insurance do you guys take?");
+		NurseServices.askQuestion("What is the name of this Hospital");
+		NurseServices.askQuestion("What hours does this hospital operate?");
+		NurseServices.askQuestion("What insurance do you guys take?");
 		
-		BPMachine.joinCleanLine();
-		thermometer.joinCleanLine();
-		thermometer.cleanTool();
-		BPMachine.cleanTool();
 		
 		System.out.println("\n");
+		
 		
 		MedicalEmployee.printAllEmployees();
 		
+		
 		System.out.println("\n");
+		
 		
 		MedicalForms.printAllFormsToday();
 		
+		
 		System.out.println("\n");
 		
-		Intern internJane = new Intern("Jane", 24, "Psychiatry");
+		
+		Intern internJane = new Intern("Jane", 24, BranchesOfHospital.PSYCHOLOGY);
 		internJane.takeNotesInJournal("prologue : Hello World");
 		internJane.takeNotesInJournal("Jan-1 : Mitochondria is the powerhouse of the cell");
 		internJane.takeNotesInJournal("Jan-2 : Glycogen stores sugars in animals");
@@ -153,15 +196,33 @@ public class Main {
 		
 		System.out.println("\n");
 		
+		
+		internJane.changeAllNoteValues((NoteToChange) -> {
+			String changedNote = NoteToChange.toUpperCase();
+			return changedNote;
+		});
+		internJane.openNotePad();
+		internJane.changeAllNoteValues((NoteToChange) -> {
+			String changedNote = NoteToChange.toLowerCase();
+			return changedNote;
+		});
+		
+		System.out.println("\n");
+		
+		
 		internJane.takeNotesInJournal(2, "Jan-7 : Insert this note before Jan-2");
 		internJane.openNotePad();
 		
+		
 		System.out.println("\n");
+
 		
 		internJane.tearPage(0);
 		internJane.openNotePad();
 		
+		
 		System.out.println("\n");
+		
 		
 		Utils.readFile(Utils.appointmentList);
 		Utils.readFile(Utils.patientList);
@@ -169,5 +230,9 @@ public class Main {
 		Utils.uniqueWordsInFile(Utils.uniqueWordsFile, Utils.uniqueWordsResultFile);
 		
 		Utils.flushOutput();
+		
+		
+		System.out.println("\n");
+		
 	}
 }

@@ -1,14 +1,15 @@
 package Entities;
 
 import com.solvd.laba.Utils.Days;
+import com.solvd.laba.Utils.Sickness;
 import com.solvd.laba.Utils.Utils;
 
 public class AppointmentForm extends MedicalForms {
-	protected String sick; 
+	protected Sickness sick; 
 	protected String reasonForVisit; 
 	protected String time; 
 	
-	public AppointmentForm(String age, String name, String time, String sick, String reasonForVisit, Days day) {
+	public AppointmentForm(String age, String name, String time, Sickness sick, String reasonForVisit, Days day) {
 		super(age, name, day);
 		this.time = time; 
 		this.sick = sick; 
@@ -29,7 +30,7 @@ public class AppointmentForm extends MedicalForms {
 		return this.name;
 	}
 	
-	public void setSick(String sick) {
+	public void setSick(Sickness sick) {
 		this.sick = sick;
 	}
 

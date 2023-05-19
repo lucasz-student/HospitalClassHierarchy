@@ -5,22 +5,23 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import com.solvd.laba.Utils.Days;
+import com.solvd.laba.Utils.Sickness;
 import com.solvd.laba.Utils.Utils;
 
 public class RegularPatient implements Patient{
 	private String name;
 	private int age; 
-	private boolean sick; 
+	private Sickness sick; 
 	private String reasonForVisit;
 	
-	public RegularPatient(String name, int age, boolean sick, String reasonForVisit) {
+	public RegularPatient(String name, int age, Sickness sick, String reasonForVisit) {
 		this.name = name; 
 		this.age = age;
 		this.sick = sick;
 		this.reasonForVisit = reasonForVisit;
 	}
 	
-	public void setSick(boolean sick) {
+	public void setSick(Sickness sick) {
 		this.sick = sick; 
 	}
 	
@@ -32,30 +33,12 @@ public class RegularPatient implements Patient{
 		return this.age; 
 	}
 	
-	public boolean getSick() {
+	public Sickness getSick() {
 		return this.sick;
 	}
 	
-	public AppointmentForm scheduleAppointmentWithNurse(Nurse nurse, String time, String sick, Days day) throws IOException {
-		String age = Integer.toString(this.age);
-		if (this.sick) { 
-			sick = "Sick";
-		} else {
-			sick = "Not sick";
-		}
-		AppointmentForm appointmentForm = new AppointmentForm(age, this.name, time, sick, this.reasonForVisit, day);
-		
-		BufferedWriter writer = new BufferedWriter(new FileWriter(Utils.appointmentList, true));
-		try  {
-			Utils.logger.info("Logging Name Patient to Appointment file: " + this.name);
-			writer.write("\n" + appointmentForm.returnForm());
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally { 
-			writer.close();
-		}
-		
-		return appointmentForm;
+	public String getReasonForVisit() {
+		return this.reasonForVisit;
 	}
 
 	@Override

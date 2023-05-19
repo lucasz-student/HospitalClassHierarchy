@@ -25,6 +25,14 @@ public class SurgeryPatient implements Patient{
 		return this.name;
 	}
 	
+	public int getAge() {
+		return this.age;
+	}
+	
+	public String getSurgeryName() {
+		return this.surgeryName;
+	}
+	
 	public void setSurgeryCompletion(boolean status) { 
 		this.surgeryCompletion = status;
 		if (status) {
@@ -33,13 +41,6 @@ public class SurgeryPatient implements Patient{
 		else {
 			System.out.println("Current status for patient is incomplete\n");
 		}
-	}
-	
-	public String[] SurgeryCardFromNurse(Nurse nurse) { 
-		String[] surgeryCard = {String.valueOf(this.age), this.name, this.surgeryName}; 
-		this.surgeryCompletion = false;
-		System.out.println("\nHello, " + this.name + " your surgery is scheduled and your current surgery status for patient is incomplete\n");
-		return surgeryCard;
 	}
 
 	@Override

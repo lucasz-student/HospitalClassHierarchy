@@ -16,10 +16,6 @@ public interface Tools {
 	};
 	
 	public void cleanTool();
-
-	public void equipTool();
 	
 	public Doctor getOwner();
-	
-
 }
