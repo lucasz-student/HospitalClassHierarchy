@@ -1,4 +1,4 @@
-package Entities;
+package com.solvd.laba.Entities;
 
 import java.util.function.Function;
 

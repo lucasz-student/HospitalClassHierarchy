@@ -1,6 +1,6 @@
 package com.solvd.laba.NonMedicalWorkers;
 
-import Entities.GeneralSurgeon;
+import com.solvd.laba.Entities.GeneralSurgeon;
 
 public final class SurgeryRoomSanitizor implements CleaningAndSanitization{
 

@@ -1,8 +1,13 @@
-package Services;
+package com.solvd.laba.Services;
 
 import java.io.IOException;
 import java.util.Scanner;
 
+import com.solvd.laba.Entities.AppointmentForm;
+import com.solvd.laba.Entities.Doctor;
+import com.solvd.laba.Entities.Nurse;
+import com.solvd.laba.Entities.RegularPatient;
+import com.solvd.laba.Entities.WellnessForm;
 import com.solvd.laba.Exceptions.NoAppointmentException;
 import com.solvd.laba.Exceptions.PatientNotFoundException;
 import com.solvd.laba.Exceptions.UnequippedOrUncleanToolException;
@@ -13,11 +18,6 @@ import com.solvd.laba.Utils.Days;
 import com.solvd.laba.Utils.Sickness;
 import com.solvd.laba.Utils.ToolReadings;
 import com.solvd.laba.Utils.Utils;
-import Entities.AppointmentForm;
-import Entities.Doctor;
-import Entities.Nurse;
-import Entities.RegularPatient;
-import Entities.WellnessForm;
 
 public class DoctorServices {
 

@@ -1,13 +1,12 @@
-package Services;
+package com.solvd.laba.Services;
 
+import com.solvd.laba.Entities.GeneralSurgeon;
+import com.solvd.laba.Entities.SurgeryCard;
+import com.solvd.laba.Entities.SurgeryPatient;
 import com.solvd.laba.Exceptions.NoAppointmentException;
 import com.solvd.laba.Exceptions.PatientNotFoundException;
 import com.solvd.laba.Exceptions.UnknownSurgeryException;
 import com.solvd.laba.Utils.Utils;
-
-import Entities.GeneralSurgeon;
-import Entities.SurgeryCard;
-import Entities.SurgeryPatient;
 
 public class SurgeonServices {
 	

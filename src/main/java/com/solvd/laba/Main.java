@@ -5,11 +5,26 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.solvd.laba.Entities.AppointmentForm;
+import com.solvd.laba.Entities.Doctor;
+import com.solvd.laba.Entities.GeneralSurgeon;
+import com.solvd.laba.Entities.Intern;
+import com.solvd.laba.Entities.MedicalEmployee;
+import com.solvd.laba.Entities.MedicalForms;
+import com.solvd.laba.Entities.Nurse;
+import com.solvd.laba.Entities.RegularPatient;
+import com.solvd.laba.Entities.SurgeryCard;
+import com.solvd.laba.Entities.SurgeryPatient;
+import com.solvd.laba.Entities.WellnessForm;
 import com.solvd.laba.Exceptions.NoAppointmentException;
 import com.solvd.laba.Exceptions.PatientNotFoundException;
 import com.solvd.laba.Exceptions.ToolPermissionDeniedException;
 import com.solvd.laba.Exceptions.UnequippedOrUncleanToolException;
 import com.solvd.laba.NonMedicalWorkers.SurgeryRoomSanitizor;
+import com.solvd.laba.Services.AppointmentService;
+import com.solvd.laba.Services.DoctorServices;
+import com.solvd.laba.Services.NurseServices;
+import com.solvd.laba.Services.SurgeonServices;
 import com.solvd.laba.Tools.Sphygmomanometer;
 import com.solvd.laba.Tools.Stethoscope;
 import com.solvd.laba.Tools.Thermometer;
@@ -17,22 +32,6 @@ import com.solvd.laba.Utils.BranchesOfHospital;
 import com.solvd.laba.Utils.Days;
 import com.solvd.laba.Utils.Sickness;
 import com.solvd.laba.Utils.Utils;
-
-import Entities.AppointmentForm;
-import Entities.Doctor;
-import Entities.GeneralSurgeon;
-import Entities.Intern;
-import Entities.MedicalEmployee;
-import Entities.MedicalForms;
-import Entities.Nurse;
-import Entities.RegularPatient;
-import Entities.SurgeryCard;
-import Entities.SurgeryPatient;
-import Entities.WellnessForm;
-import Services.AppointmentService;
-import Services.DoctorServices;
-import Services.NurseServices;
-import Services.SurgeonServices;
 
 public class Main {
 	

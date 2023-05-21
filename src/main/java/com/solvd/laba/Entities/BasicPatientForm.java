@@ -1,4 +1,4 @@
-package Entities;
+package com.solvd.laba.Entities;
 
 import com.solvd.laba.Utils.Days;
 import com.solvd.laba.Utils.Utils;

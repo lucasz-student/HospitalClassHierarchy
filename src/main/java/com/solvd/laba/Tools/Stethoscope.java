@@ -3,12 +3,11 @@ package com.solvd.laba.Tools;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.solvd.laba.Entities.Doctor;
+import com.solvd.laba.Entities.RegularPatient;
 import com.solvd.laba.Exceptions.UnequippedOrUncleanToolException;
 import com.solvd.laba.Utils.Sanitization;
 import com.solvd.laba.Utils.ToolReadings;
-
-import Entities.Doctor;
-import Entities.RegularPatient;
 
 public final class Stethoscope implements Tools {
 	

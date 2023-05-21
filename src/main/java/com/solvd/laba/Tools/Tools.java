@@ -3,7 +3,7 @@ package com.solvd.laba.Tools;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import Entities.Doctor;
+import com.solvd.laba.Entities.Doctor;
 
 public interface Tools {
 	

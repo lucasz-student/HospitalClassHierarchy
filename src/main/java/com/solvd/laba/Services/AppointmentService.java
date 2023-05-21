@@ -1,4 +1,4 @@
-package Services;
+package com.solvd.laba.Services;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -7,16 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.solvd.laba.Entities.AppointmentForm;
+import com.solvd.laba.Entities.GeneralSurgeon;
+import com.solvd.laba.Entities.Nurse;
+import com.solvd.laba.Entities.RegularPatient;
+import com.solvd.laba.Entities.SurgeryCard;
+import com.solvd.laba.Entities.SurgeryPatient;
 import com.solvd.laba.Utils.Days;
 import com.solvd.laba.Utils.Sickness;
 import com.solvd.laba.Utils.Utils;
-
-import Entities.AppointmentForm;
-import Entities.GeneralSurgeon;
-import Entities.Nurse;
-import Entities.RegularPatient;
-import Entities.SurgeryCard;
-import Entities.SurgeryPatient;
 
 public class AppointmentService {
 	

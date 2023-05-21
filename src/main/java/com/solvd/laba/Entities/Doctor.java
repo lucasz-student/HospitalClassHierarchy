@@ -1,4 +1,4 @@
-package Entities;
+package com.solvd.laba.Entities;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

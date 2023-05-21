@@ -1,8 +1,8 @@
-package Services;
+package com.solvd.laba.Services;
 
-import Entities.AppointmentForm;
-import Entities.Nurse;
-import Entities.RegularPatient;
+import com.solvd.laba.Entities.AppointmentForm;
+import com.solvd.laba.Entities.Nurse;
+import com.solvd.laba.Entities.RegularPatient;
 
 public class NurseServices {
 
