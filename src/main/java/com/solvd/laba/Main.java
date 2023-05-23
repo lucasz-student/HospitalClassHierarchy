@@ -39,6 +39,7 @@ public class Main {
 		
 		Utils.logger.info("Testing program...");
 		
+		
 		SurgeryRoomSanitizor sanitizorJacob = new SurgeryRoomSanitizor("Jacob" , 30);
 
 		Doctor doctorPaul = new Doctor("Paul", 45, BranchesOfHospital.GENERALCARE);
@@ -59,7 +60,6 @@ public class Main {
 		} catch (IOException e2) {
 			e2.printStackTrace();
 		}
-		
 		
 		Stethoscope stethoscope = new Stethoscope(5, doctorPaul);
 		Sphygmomanometer BPMachine = new Sphygmomanometer("pocket-aneroid", 5, doctorPaul);
@@ -229,9 +229,5 @@ public class Main {
 		Utils.uniqueWordsInFile(Utils.uniqueWordsFile, Utils.uniqueWordsResultFile);
 		
 		Utils.flushOutput();
-		
-		
-		System.out.println("\n");
-		
-	}
+	}	
 }
