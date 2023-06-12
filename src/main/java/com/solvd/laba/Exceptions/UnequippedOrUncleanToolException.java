@@ -4,8 +4,6 @@ import com.solvd.laba.Utils.Utils;
 
 public class UnequippedOrUncleanToolException extends Exception{
 
-	private static final long serialVersionUID = 1L;
-	
 	public UnequippedOrUncleanToolException() {
 		Utils.logger.warn("Call Doctor method to equip tool");
 	}

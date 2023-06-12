@@ -4,8 +4,6 @@ import com.solvd.laba.Utils.Utils;
 
 public class NoAppointmentException extends Exception {
 
-	private static final long serialVersionUID = 1L;
-
 	public NoAppointmentException() {
 	}
 	

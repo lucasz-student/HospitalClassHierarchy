@@ -8,8 +8,6 @@ import com.solvd.laba.Utils.Utils;
 
 public class PatientNotFoundException extends Exception {
 
-	private static final long serialVersionUID = 1L;
-	
 	public PatientNotFoundException() {		
 	}
 	
